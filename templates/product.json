@@ -1,0 +1,149 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "separator": {
+          "type": "separator",
+          "disabled": true,
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "4d9bcffa-01b5-436a-8695-93a085336a35": {
+          "type": "custom",
+          "settings": {
+            "code": "<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.12) -->\n<script type=\"text/javascript\">\n// Overrides:\n// var afterpay_min = 0.04;            // As per your Afterpay contract.\n// var afterpay_max = 2000.00;         // As per your Afterpay contract.\n// var afterpay_cbt_enabled = false;   // As per your Afterpay contract; change to true to display Cross-Border Trade artwork (for AU/NZ).\n// var afterpay_logo_theme = 'colour'; // Can be 'colour', 'black' or 'white'.\n// var afterpay_product_selector = '#product-price-selector';\n// var afterpay_cart_integration_enabled = true;\n// var afterpay_cart_static_selector = '#cart-subtotal-selector';\n\n// Non-editable fields:\nvar afterpay_shop_currency = {{ shop.currency | json }};\nvar afterpay_cart_currency = {{ cart.currency.iso_code | json }};\nvar afterpay_shop_money_format = {{ shop.money_format | json }};\nvar afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};\nvar afterpay_theme_name = {{ theme.name | json }};\nvar afterpay_product = {{ product | json }};\nvar afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};\nvar afterpay_cart_total_price = {{ cart.total_price | json }};\nvar afterpay_js_snippet_version = '1.0.12';\n</script>\n<script type=\"text/javascript\" src=\"https://static.afterpay.com/shopify-afterpay-javascript.js\"></script>\n<!-- End Shopify-Afterpay JavaScript Snippet (v1.0.12) -->"
+          }
+        },
+        "12b9c287-6478-4c5d-bfc4-661fd02ea568": {
+          "type": "custom",
+          "disabled": true,
+          "settings": {
+            "code": "<script src=\"https://bpi.humm-au.com/au/content/scripts/price-info_sync.js?productPrice={{product.selected_or_first_available_variant.price | divided_by: 100.00}}&merchantId=PLACE_YOUR_MERCHANT_ID\"></script>"
+          }
+        },
+        "d2dd54ed-2558-4f46-9044-41a415e22782": {
+          "type": "separator",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "size_chart": "",
+            "variant_labels": true,
+            "picker_type": "button",
+            "color_swatches": false
+          }
+        },
+        "inventory_status": {
+          "type": "inventory_status",
+          "settings": {
+            "inventory_threshold": 0,
+            "inventory_transfers_enable": true
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_tab": true
+          }
+        },
+        "contact": {
+          "type": "contact",
+          "settings": {
+            "title": "ask a question",
+            "phone": false
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "settings": {
+            "title": "Shipping information",
+            "content": "<p><strong>Delivery</strong></p><p>Orders are sent via Express or Registered Post. We will pack and send your order as quickly as we can, but please allow 2 – 7 business days for delivery depending on your location. Pickup from our store is also available at checkout.</p><p><strong>Returns</strong></p><p>If you are not 100% satisfied with your purchase, you may exchange or return the item for a full refund within 14 days, subject to the conditions in our <a href=\"https://ritchies-jewellers.myshopify.com/pages/delivery-returns\" target=\"_blank\">returns policy</a>.</p>",
+            "page": ""
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "separator",
+        "price",
+        "4d9bcffa-01b5-436a-8695-93a085336a35",
+        "12b9c287-6478-4c5d-bfc4-661fd02ea568",
+        "d2dd54ed-2558-4f46-9044-41a415e22782",
+        "variant_picker",
+        "inventory_status",
+        "buy_buttons",
+        "description",
+        "contact",
+        "tab",
+        "share"
+      ],
+      "settings": {
+        "sku_enable": false,
+        "image_position": "left",
+        "image_size": "medium",
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "sub": {
+      "type": "product-full-width",
+      "disabled": true,
+      "settings": {
+        "max_width": true
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "You may also like",
+        "related_count": 5
+      }
+    },
+    "recently-viewed": {
+      "type": "recently-viewed",
+      "settings": {
+        "recent_count": 4
+      }
+    },
+    "collection-return": {
+      "type": "collection-return",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "sub",
+    "product-recommendations",
+    "recently-viewed",
+    "collection-return"
+  ]
+}

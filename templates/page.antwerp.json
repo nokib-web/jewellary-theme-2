@@ -1,0 +1,69 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "164601252567b4e4a2": {
+      "type": "promo-grid",
+      "blocks": {
+        "8d38aebd-2a63-4370-b92b-7345ad9602d0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Antwerp_city_and_diamond.jpg",
+            "link": "",
+            "width": "100"
+          }
+        }
+      },
+      "block_order": [
+        "8d38aebd-2a63-4370-b92b-7345ad9602d0"
+      ],
+      "settings": {
+        "full_width": false,
+        "gutter_size": 20,
+        "space_above": false,
+        "space_below": false
+      }
+    },
+    "16460125293e172ef5": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/ADB_Logo.png",
+        "image_width": 400,
+        "subtitle": "",
+        "title": "why antwerp?",
+        "text": "<p>We are extremely proud of the fact that we are certified Antwerp Diamond Brokers. This allows us to make regular diamond buying trips to Antwerp, Belgium, the diamond capital of the world where 80% of the world’s diamonds are traded. This allows us to act as your “personal broker” and buy diamonds with significant savings on retail prices.<br/><br/>Because of the enormous choice of top-quality diamonds available in Antwerp, we can easily locate the perfect diamond for you in the exact size, shape, quality, and price that you wish. And we can deliver it to you at a truly substantial saving.<br/><br/>This special service is available to you because my store is a member of the Nationwide Jewellers buying group, which is associated with the worlds largest Jewellery Buying Group with over 400 members. They make it possible for me to deal directly with Antwerp’s leading diamond cutters and save you the hefty importer and distributor costs.<br/><br/>So if you would like to own a spectacular diamond and enjoy once-in-a-lifetime savings, please stop in or call to get more information on this extraordinary offer.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "left",
+        "divider": false
+      }
+    },
+    "16460126794350581f": {
+      "type": "featured-video",
+      "settings": {
+        "title": "",
+        "video_url": "https://www.youtube.com/watch?v=-CD3yMmTpRA",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "164601252567b4e4a2",
+    "16460125293e172ef5",
+    "16460126794350581f"
+  ]
+}

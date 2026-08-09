@@ -1,0 +1,724 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slideshow-0": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "Timeless Craftsmanship Since 1987",
+            "title": "Forever Begins With a Yes",
+            "title_size": 40,
+            "subheading": "Handcrafted diamond engagement rings, designed and made in Australia – where timeless elegance meets true love.",
+            "link": "shopify://collections/engagement-wedding-rings-Evoriajewels-jewellers",
+            "link_text": "Shop Engagement Rings",
+            "link_2": "shopify://collections/engagement-rings-1",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "image_w6VQkM": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "Effortless brilliance. Endlessly worn. Eternally loved.",
+            "title": "Design Your Own",
+            "title_size": 40,
+            "subheading": "",
+            "link": "https://Evoriajewelsjewellersnorthrocks.jewelershowcase.com/",
+            "link_text": "start creating",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "image_rwPVCD": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "Two Souls. One Spark. Forever Bonded.",
+            "title": "Bonded in Brilliance",
+            "title_size": 40,
+            "subheading": "Celebrate lasting love with wedding bands handcrafted in Australia - ethically made, beautifully refined, and designed to stand the test of time.",
+            "link": "shopify://collections/rings-bands",
+            "link_text": "View Wedding Bands",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "#ffffff",
+            "text_align": "vertical-center horizontal-center",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        },
+        "image_X3RHhr": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "top_subheading": "",
+            "title": "",
+            "title_size": 80,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "slideshow-0",
+        "image_w6VQkM",
+        "image_rwPVCD",
+        "image_X3RHhr"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_height": "750px",
+        "mobile_height": "auto",
+        "parallax": false,
+        "style": "minimal",
+        "autoplay": true,
+        "autoplay_speed": 7
+      }
+    },
+    "custom_hero_slider": {
+      "type": "custom-hero-slider",
+      "blocks": {
+        "slide_1": {
+          "type": "slide",
+          "settings": {
+            "bg_zoom": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 40,
+            "heading_prefix": "NEW COLLECTION",
+            "prefix_color": "#00d1a0",
+            "heading": "Discover The Future",
+            "heading_size": 48,
+            "heading_color": "#ffffff",
+            "text": "<p>Our latest products are here. Experience the best quality.</p>",
+            "text_size": 18,
+            "text_color": "#ffffff",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_bg": "#00d1a0",
+            "button_color": "#ffffff",
+            "content_animation": "fade-up",
+            "vertical_position": "center",
+            "horizontal_position": "flex-start",
+            "text_alignment": "left",
+            "mobile_text_alignment": "center",
+            "content_bg_color": "#000000",
+            "content_bg_opacity": 0,
+            "content_radius": 0,
+            "content_max_width": 600,
+            "padding_x": 50,
+            "padding_y": 60
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "bg_zoom": true,
+            "overlay_color": "#000000",
+            "overlay_opacity": 40,
+            "heading_prefix": "LIMITED EDITION",
+            "prefix_color": "#00d1a0",
+            "heading": "Next Generation Tech",
+            "heading_size": 48,
+            "heading_color": "#ffffff",
+            "text": "<p>Our latest products are here. Experience the best quality.</p>",
+            "text_size": 18,
+            "text_color": "#ffffff",
+            "button_label": "Shop Now",
+            "button_link": "",
+            "button_bg": "#00d1a0",
+            "button_color": "#ffffff",
+            "content_animation": "fade-up",
+            "vertical_position": "center",
+            "horizontal_position": "center",
+            "text_alignment": "center",
+            "mobile_text_alignment": "center",
+            "content_bg_color": "#000000",
+            "content_bg_opacity": 0,
+            "content_radius": 0,
+            "content_max_width": 600,
+            "padding_x": 50,
+            "padding_y": 60
+          }
+        }
+      },
+      "block_order": [
+        "slide_1",
+        "slide_2"
+      ],
+      "disabled": true,
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": 6,
+        "drag": true,
+        "transition_style": "fade",
+        "thumbnail_border_color": "#00d1a0",
+        "container_width": "full",
+        "desktop_height_vh": 75,
+        "mobile_media_height": 280,
+        "mobile_content_bg": "#000000"
+      }
+    },
+    "prismara_hero_slider": {
+      "type": "prismara-hero-slider",
+      "blocks": {
+        "slide_XQHmNt": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/Fidget-Beads-Ring.webp",
+            "category": "",
+            "subtitle": "",
+            "bg_color": "#c2b2a2",
+            "product_image": "shopify://shop_images/Fidget_Beads_Ring.webp",
+            "description": "Celebrate every milestone with a ring that tells your story.",
+            "button_label": "Shop Rings",
+            "button_link": "shopify://collections/jewellery-rings-1"
+          }
+        },
+        "slide_2": {
+          "type": "slide",
+          "settings": {
+            "bg_image": "shopify://shop_images/ScreenShot2023-03-22at11.44.53PM.png",
+            "category": "",
+            "subtitle": "",
+            "bg_color": "#c2b2a2",
+            "product_image": "shopify://shop_images/ScreenShot2023-03-22at11.43.30PM.png",
+            "description": "Elevate every look with our exquisite necklaces. From pendants to chokers, these designs add sophistication to any style.",
+            "button_label": "Shop Rings",
+            "button_link": "shopify://collections/cudworth-necklace"
+          }
+        }
+      },
+      "block_order": [
+        "slide_XQHmNt",
+        "slide_2"
+      ],
+      "settings": {
+        "show_socials": false,
+        "overlay_opacity": 20,
+        "text_alignment": "center",
+        "heading_color": "#ffffff",
+        "subtitle_color": "#c5a880",
+        "description_color": "#ffffff",
+        "social_color": "#ffffff",
+        "btn_border_color": "#ffffff",
+        "btn_text_color": "#ffffff",
+        "btn_hover_bg": "#c5a880",
+        "btn_hover_text": "#000000",
+        "heading_size": 5,
+        "subtitle_size": 1.5,
+        "desc_size": 1.1,
+        "heading_size_mobile": 3.5,
+        "subtitle_size_mobile": 1.2,
+        "desc_size_mobile": 1,
+        "arch_width": 320,
+        "arch_height": 480,
+        "arch_outline_offset": 15,
+        "arch_outline_color": "#ffffff",
+        "arch_width_mobile": 160,
+        "arch_height_mobile": 240,
+        "arch_outline_offset_mobile": 10
+      }
+    },
+    "featured_categories_circles": {
+      "type": "featured-categories",
+      "blocks": {
+        "block_1": {
+          "type": "category",
+          "settings": {
+            "title": "NEW IN",
+            "link": ""
+          }
+        },
+        "block_2": {
+          "type": "category",
+          "settings": {
+            "title": "WATCH",
+            "link": "shopify://collections/watches"
+          }
+        },
+        "block_3": {
+          "type": "category",
+          "settings": {
+            "title": "ACCESSORIES",
+            "link": "shopify://collections/luxury-pens-designer-key-rings-Evoriajewels-jewellers"
+          }
+        },
+        "block_4": {
+          "type": "category",
+          "settings": {
+            "title": "RINGS",
+            "link": "shopify://collections/jewellery-rings-1"
+          }
+        },
+        "block_5": {
+          "type": "category",
+          "settings": {
+            "title": "NECKLACES",
+            "link": "shopify://collections/necklaces-pendants"
+          }
+        },
+        "block_6": {
+          "type": "category",
+          "settings": {
+            "title": "GIFT IDEAS",
+            "link": "shopify://collections/giftware"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "OUR CATEGORIES",
+        "text": "Explore our collection of sophisticated, modern designs that make a statement without saying a word. Find your signature look today.",
+        "align_text": "center",
+        "grid_alignment": "center",
+        "circle_size": 170,
+        "item_gap": 30,
+        "image_shadow": false,
+        "image_border": false,
+        "hover_zoom": true,
+        "bg_color": "#ffffff",
+        "text_color": "#111111",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "divider": false
+      }
+    },
+    "craftsmanship_heritage_new": {
+      "type": "craftsmanship-heritage",
+      "settings": {
+        "layout": "left",
+        "align_text": "left",
+        "image": "shopify://shop_images/ScreenShot2023-03-22at11.47.37PM.png",
+        "subtitle": "",
+        "title": "Master Craftsmanship",
+        "text": "<p>Decades of experience go into every piece we create. Our master jewelers blend traditional techniques with modern precision to craft rings that will last a lifetime and beyond.</p>",
+        "button_label": "Our Story",
+        "button_link": "shopify://pages/about-Evoriajewels-jewellers"
+      }
+    },
+    "text_and_image_MC78jN": {
+      "type": "text-and-image",
+      "blocks": {
+        "block_1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Fidget-Beads-Ring.webp"
+          }
+        },
+        "block_2": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/ScreenShot2023-03-22at11.43.30PM.png"
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2"
+      ],
+      "settings": {
+        "image_width": 550,
+        "images_per_view": 1,
+        "slider_autoplay": true,
+        "slider_speed": 3,
+        "subtitle": "Your Legacy Begins Here",
+        "title": "Uncover Rare Brilliance",
+        "text": "<p>A thoughtful piece designed to bring a little comfort to your everyday moments. Move, spin, and fidget with the beads whenever your hands need something to do</p>",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "story_banner_new": {
+      "type": "story-banner",
+      "settings": {
+        "bg_color": "#000000",
+        "left_image": "shopify://shop_images/Fidget_Beads_Ring.webp",
+        "right_image": "shopify://shop_images/I_Am_Enough_Ring_Only_Gold.webp",
+        "text_align": "center",
+        "text_size": 24,
+        "text": "<p>Designed with intention, our jewelry brings together style, comfort, and personal meaning. Whether you find a moment of calm with our <strong>Fidget Beads Ring</strong> or carry a daily reminder with our <strong>“I Am Enough” Ring</strong>, every piece is created to celebrate who you are</p>",
+        "button_label": "OUR STORY",
+        "button_link": "shopify://pages/our-story",
+        "content_width": 800,
+        "overlay_opacity": 30,
+        "primary_text_color": "#d4af37",
+        "secondary_text_color": "#ffffff",
+        "button_style": "underline",
+        "button_color": "#ffffff",
+        "button_bg_color": "#c8a26a",
+        "button_hover_color": "#c8a26a",
+        "button_hover_bg_color": "#ffffff",
+        "divider": false
+      }
+    },
+    "featured_collection_RbCckh": {
+      "type": "featured-collection",
+      "name": "Featured collection",
+      "settings": {
+        "title": "Featured collection",
+        "home_featured_products": "featured",
+        "per_row": 2,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "custom_design_journey_new": {
+      "type": "custom-design-journey",
+      "blocks": {
+        "step_hciLXf": {
+          "type": "step",
+          "settings": {
+            "title": "Step Title",
+            "text": "Description of this step."
+          }
+        },
+        "step_Tr3CwR": {
+          "type": "step",
+          "settings": {
+            "title": "Step Title",
+            "text": "Description of this step."
+          }
+        },
+        "step_CPfYdP": {
+          "type": "step",
+          "settings": {
+            "title": "Step Title",
+            "text": "Description of this step."
+          }
+        },
+        "step_9Wm6dY": {
+          "type": "step",
+          "settings": {
+            "title": "Step Title",
+            "text": "Description of this step."
+          }
+        }
+      },
+      "block_order": [
+        "step_hciLXf",
+        "step_Tr3CwR",
+        "step_CPfYdP",
+        "step_9Wm6dY"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#111111",
+        "accent_color": "#d4af37",
+        "title": "The Bespoke Journey",
+        "subtitle": "From a spark of imagination to a masterpiece you can wear. Discover how we turn your dream ring into reality.",
+        "image": "shopify://shop_images/ScreenShot2023-03-22at11.43.30PM.png"
+      }
+    },
+    "luxury_repairs_new": {
+      "type": "luxury-repairs",
+      "blocks": {
+        "badge_1": {
+          "type": "badge",
+          "settings": {
+            "icon": "custom",
+            "text": "35+ Years Experience"
+          }
+        },
+        "badge_2": {
+          "type": "badge",
+          "settings": {
+            "icon": "custom",
+            "text": "Family Owned"
+          }
+        },
+        "badge_3": {
+          "type": "badge",
+          "settings": {
+            "icon": "custom",
+            "text": "Sydney Based"
+          }
+        }
+      },
+      "block_order": [
+        "badge_1",
+        "badge_2",
+        "badge_3"
+      ],
+      "disabled": true,
+      "settings": {
+        "bg_color": "#f8f5f1",
+        "gold_accent": "#c8a26a",
+        "heading_color": "#222222",
+        "text_color": "#444444",
+        "eyebrow": "Trusted Since 1987",
+        "heading": "Jewellery Repairs & Restoration",
+        "body": "<p>Trust our master jewellers with your most precious pieces. We specialize in ring resizing, intricate repairs, heirloom restoration, custom engraving, and professional valuations.</p>",
+        "primary_btn_label": "Explore Services",
+        "primary_btn_link": "shopify://pages/jewellery-services-sydney",
+        "btn_radius": 50,
+        "btn_bg_color": "#000000",
+        "btn_text_color": "#ffffff",
+        "btn_border_color": "#000000",
+        "btn_hover_bg": "#c8a26a",
+        "btn_hover_text": "#ffffff",
+        "btn_hover_border": "#c8a26a",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60
+      }
+    },
+    "featured_collection_mxhfE9": {
+      "type": "featured-collection",
+      "disabled": true,
+      "name": "Featured collection",
+      "settings": {
+        "title": "Shop I am enough Rings",
+        "home_featured_products": "engagement-wedding-rings-evoriajewels-jewellers",
+        "per_row": 4,
+        "rows": 1,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    },
+    "layered_images_showcase": {
+      "type": "layered-images-showcase",
+      "settings": {
+        "image_1": "shopify://shop_images/ScreenShot2023-03-22at11.44.53PM.png",
+        "image_2": "shopify://shop_images/I_Am_Enough_Ring_Only_Gold.png",
+        "image_3": "shopify://shop_images/ScreenShot2023-03-22at11.46.07PM.png",
+        "image_radius": 16,
+        "image_shadow": true,
+        "initial_opacity": 0.4,
+        "initial_blur": 2,
+        "initial_grayscale": 40,
+        "hover_scale": 120,
+        "transition_speed": 2,
+        "layout": "left",
+        "align_text": "left",
+        "eyebrow": "JEWELLERY WITH MEANING",
+        "title": "WEAR SOMETHING THAT TELLS YOUR STORY",
+        "text": "<p>From meaningful pieces like the I Am Enough Ring to playful designs like our Fidget Beads Ring, each piece is created to bring a little more meaning, comfort, and personality to your everyday moments</p>",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all",
+        "button_style": "solid",
+        "btn_radius": 4,
+        "bg_color": "#000000",
+        "text_color": "#ffffff",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "divider": false
+      }
+    },
+    "text_and_image_6znAg6": {
+      "type": "text-and-image",
+      "disabled": true,
+      "name": "Image with text",
+      "settings": {
+        "image_width": 700,
+        "images_per_view": 2,
+        "slider_autoplay": true,
+        "slider_speed": 3,
+        "subtitle": "",
+        "title": "Create Your Dream Jewellery",
+        "text": "<p>Whether you're creating an engagement ring, remodelling a family heirloom, or designing a bespoke piece, our jewellers will guide you through every step.<br/><br/>Walk-ins welcome.</p>",
+        "button_label": "Visit Our Showroom",
+        "button_link": "shopify://pages/contact-us",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "164577628288f9dc1b": {
+      "type": "rich-text",
+      "disabled": true,
+      "settings": {
+        "align_text": "center",
+        "narrow_column": true,
+        "divider": false
+      }
+    },
+    "conscious_luxury_new": {
+      "type": "conscious-luxury",
+      "settings": {
+        "accent_color": "#d4af37",
+        "subtitle": "Ethical Sourcing",
+        "title": "Conscious Luxury",
+        "text": "<p>Thoughtfully designed jewellery made with care, intention, and a commitment to more mindful choices. Each piece is created to be treasured, worn often, and loved for years to come.</p>",
+        "image": "shopify://shop_images/ScreenShot2023-03-22at11.47.37PM.png",
+        "button_label": "Shop Now",
+        "button_link": "shopify://collections/all"
+      }
+    },
+    "custom_blog_showcase_new": {
+      "type": "custom-blog-showcase",
+      "blocks": {
+        "article_LXxXyV": {
+          "type": "article",
+          "settings": {
+            "article": "jewellery-education-centre/engagement-ring-buying-guide-australia",
+            "title": ""
+          }
+        },
+        "article_Qhz6nE": {
+          "type": "article",
+          "settings": {
+            "article": "news/engagement-rings-in-north-rocks",
+            "title": ""
+          }
+        },
+        "article_LdQGYi": {
+          "type": "article",
+          "settings": {
+            "article": "jewellery-education-centre/engagement-ring-buying-guide-sydney",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_LXxXyV",
+        "article_Qhz6nE",
+        "article_LdQGYi"
+      ],
+      "settings": {
+        "title": "Evoria Journal",
+        "view_all_text": "View all news and events",
+        "view_all_link": "shopify://blogs/news",
+        "bg_color": "#ffffff",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "blog-posts": {
+      "type": "blog-posts",
+      "disabled": true,
+      "settings": {
+        "title": "jewellery news & insights",
+        "blog": "jewellery-education-centre",
+        "post_limit": 3,
+        "blog_show_tags": false,
+        "blog_show_date": false,
+        "blog_show_comments": false,
+        "blog_show_author": false,
+        "view_all": true,
+        "blog_image_size": "square",
+        "divider": false
+      }
+    },
+    "custom_instafeed_wrapper_new": {
+      "type": "custom-instafeed-wrapper",
+      "settings": {
+        "title": "Follow Us",
+        "subtitle": "Follow us @evoriajewels",
+        "instagram_link": "https://www.instagram.com/nazmulhasan.nokib/",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "newsletter_ezbTtz": {
+      "type": "newsletter",
+      "blocks": {
+        "title_wrPA8k": {
+          "type": "title",
+          "settings": {
+            "title": "Become a vip"
+          }
+        },
+        "text_pDdXcn": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Join us to receive specials offers and gift ideas!</p>"
+          }
+        },
+        "form_r6p4zC": {
+          "type": "form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "title_wrPA8k",
+        "text_pDdXcn",
+        "form_r6p4zC"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_background": "#ffffff",
+        "color_text": "#000000"
+      }
+    },
+    "section_divider_new": {
+      "type": "section-divider",
+      "settings": {
+        "shape": "animated-waves",
+        "color": "#000000",
+        "height": 80,
+        "margin_top": -75,
+        "margin_bottom": 0,
+        "height_mobile": 40,
+        "margin_top_mobile": -35,
+        "margin_bottom_mobile": 0,
+        "flip_horizontal": false,
+        "flip_vertical": false,
+        "animation_direction": "left",
+        "animation_speed": 15
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "custom_hero_slider",
+    "prismara_hero_slider",
+    "featured_categories_circles",
+    "craftsmanship_heritage_new",
+    "text_and_image_MC78jN",
+    "story_banner_new",
+    "featured_collection_RbCckh",
+    "custom_design_journey_new",
+    "luxury_repairs_new",
+    "featured_collection_mxhfE9",
+    "layered_images_showcase",
+    "text_and_image_6znAg6",
+    "164577628288f9dc1b",
+    "conscious_luxury_new",
+    "custom_blog_showcase_new",
+    "blog-posts",
+    "custom_instafeed_wrapper_new",
+    "newsletter_ezbTtz",
+    "section_divider_new"
+  ]
+}

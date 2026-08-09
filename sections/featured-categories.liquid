@@ -1,0 +1,371 @@
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+
+{%- style -%}
+  .featured-categories-{{ section.id }} {
+    --bg-color: {{ section.settings.bg_color }};
+    --text-color: {{ section.settings.text_color }};
+    --circle-size: {{ section.settings.circle_size }}px;
+    --item-gap: {{ section.settings.item_gap }}px;
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .featured-categories-{{ section.id }} {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: var(--padding-top) 40px var(--padding-bottom) 40px;
+  }
+
+  .featured-categories__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: {{ section.settings.align_text }};
+  }
+
+  .featured-categories__header {
+    margin-bottom: 45px;
+    max-width: 700px;
+    {% if section.settings.align_text == 'center' %}
+      margin-left: auto;
+      margin-right: auto;
+    {% elsif section.settings.align_text == 'right' %}
+      margin-left: auto;
+    {% endif %}
+  }
+
+  .featured-categories__heading {
+    margin: 0 0 15px 0;
+  }
+
+  .featured-categories__desc {
+    opacity: 0.75;
+    margin: 0;
+  }
+
+  /* Grid Layout (Desktop) */
+  .featured-categories__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: {{ section.settings.grid_alignment }};
+    gap: var(--item-gap);
+  }
+
+  /* Item Styles */
+  .featured-categories__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: var(--circle-size);
+    transition: transform 0.3s ease;
+  }
+
+  .featured-categories__img-wrapper {
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    
+    {% if section.settings.image_shadow %}
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    {% endif %}
+    {% if section.settings.image_border %}
+      border: 1px solid rgba(0,0,0,0.05);
+    {% endif %}
+  }
+
+  .featured-categories__img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .featured-categories__title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+  }
+
+  /* Hover Effects */
+  {% if section.settings.hover_zoom %}
+    .featured-categories__item:hover .featured-categories__img-wrapper {
+      transform: translateY(-4px);
+      {% if section.settings.image_shadow %}
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      {% else %}
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      {% endif %}
+    }
+    
+    .featured-categories__item:hover .featured-categories__img-wrapper img {
+      transform: scale(1.06);
+    }
+
+    .featured-categories__item:hover .featured-categories__title {
+      color: #888;
+    }
+  {% endif %}
+
+  /* Mobile Grid Layout */
+  @media only screen and (max-width: 768px) {
+    .featured-categories-{{ section.id }} {
+      padding: var(--padding-top) 20px var(--padding-bottom) 20px;
+    }
+
+    .featured-categories__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .featured-categories__item {
+      width: 100%;
+      max-width: 180px;
+    }
+
+    .featured-categories__img-wrapper {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+    }
+  }
+{%- endstyle -%}
+
+<div class="featured-categories-{{ section.id }}" data-aos="fade-up">
+  <div class="featured-categories__container">
+    
+    <!-- Heading & Description -->
+    {%- if section.settings.title != blank or section.settings.text != blank -%}
+      <div class="featured-categories__header">
+        {%- if section.settings.title != blank -%}
+          <h2 class="h1 featured-categories__heading">{{ section.settings.title }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="rte featured-categories__desc"><p>{{ section.settings.text }}</p></div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Categories Row -->
+    <div class="featured-categories__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'category' -%}
+          <a href="{{ block.settings.link | default: '#' }}" class="featured-categories__item" {{ block.shopify_attributes }}>
+            
+            <!-- Category Circle Image -->
+            <div class="featured-categories__img-wrapper">
+              {%- if block.settings.image != blank -%}
+                {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                <img class="lazyload"
+                     data-src="{{ img_url }}"
+                     data-widths="[180, 360, 540]"
+                     data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                     data-sizes="auto"
+                     alt="{{ block.settings.image.alt | escape }}">
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+
+            <!-- Category Title -->
+            <span class="featured-categories__title">
+              {{ block.settings.title }}
+            </span>
+
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{%- if section.settings.divider -%}</div>{%- endif -%}
+
+{% schema %}
+{
+  "name": "Featured Categories",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Our Categories"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Explore our collection of sophisticated, modern designs that make a statement without saying a word. Find your signature look today."
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Header Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "grid_alignment",
+      "label": "Category Items Alignment",
+      "default": "center",
+      "options": [
+        { "value": "flex-start", "label": "Left Align" },
+        { "value": "center", "label": "Center Align" },
+        { "value": "flex-end", "label": "Right Align" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "circle_size",
+      "label": "Circle Diameter Size",
+      "default": 170,
+      "min": 100,
+      "max": 250,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "label": "Gap between items",
+      "default": 30,
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Image Styling & Interaction"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_shadow",
+      "label": "Enable Image Shadow",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "image_border",
+      "label": "Enable Suble Border",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hover_zoom",
+      "label": "Enable Hover Zoom & Lift",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Colors & Spacing"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 60,
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 60,
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "Show section divider",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Circle Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Title",
+          "default": "NEW IN"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Category Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Circular Categories List",
+      "blocks": [
+        { "type": "category", "settings": { "title": "New In" } },
+        { "type": "category", "settings": { "title": "Bracelets" } },
+        { "type": "category", "settings": { "title": "Earrings" } },
+        { "type": "category", "settings": { "title": "Rings" } },
+        { "type": "category", "settings": { "title": "Necklaces" } },
+        { "type": "category", "settings": { "title": "Gift Ideas" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
+{% comment %} Touch file {% endcomment %}

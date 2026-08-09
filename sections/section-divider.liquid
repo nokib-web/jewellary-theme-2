@@ -1,0 +1,280 @@
+{%- style -%}
+  .section-divider-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    line-height: 0;
+    z-index: 10;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .section-divider-{{ section.id }} svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: {{ section.settings.height }}px;
+    {%- if section.settings.flip_horizontal -%}
+      transform: scaleX(-1);
+    {%- endif -%}
+    {%- if section.settings.flip_vertical -%}
+      transform: scaleY(-1);
+    {%- endif -%}
+    {%- if section.settings.flip_horizontal and section.settings.flip_vertical -%}
+      transform: scale(-1, -1);
+    {%- endif -%}
+  }
+  .section-divider-{{ section.id }} .shape-fill {
+    fill: {{ section.settings.color }};
+  }
+
+  /* Animation Styles */
+  .parallax-waves > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5) infinite;
+  }
+  .parallax-waves > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: {{ section.settings.animation_speed | times: 1.4 }}s;
+  }
+  .parallax-waves > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: {{ section.settings.animation_speed | times: 1.2 }}s;
+  }
+  .parallax-waves > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: {{ section.settings.animation_speed | times: 0.8 }}s;
+  }
+  .parallax-waves > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: {{ section.settings.animation_speed }}s;
+  }
+  
+  {%- if section.settings.animation_direction == 'right' -%}
+    @keyframes move-forever {
+      0% { transform: translate3d(-90px,0,0); }
+      100% { transform: translate3d(85px,0,0); }
+    }
+  {%- else -%}
+    @keyframes move-forever {
+      0% { transform: translate3d(85px,0,0); }
+      100% { transform: translate3d(-90px,0,0); }
+    }
+  {%- endif -%}
+
+  @media only screen and (max-width: 768px) {
+    .section-divider-{{ section.id }} {
+      margin-top: {{ section.settings.margin_top_mobile }}px;
+      margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+    }
+    .section-divider-{{ section.id }} svg {
+      height: {{ section.settings.height_mobile }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="section-divider-{{ section.id }}">
+  {%- case section.settings.shape -%}
+    {%- when 'wave' -%}
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+      </svg>
+    {%- when 'curve' -%}
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V73.19C216.59,141.7,460.67,143.4,704.22,110.15,861.64,88.58,1028.91,55.51,1200,81.16V0Z" class="shape-fill"></path>
+      </svg>
+    {%- when 'angle' -%}
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 0L0 0 0 120 1200 0Z" class="shape-fill"></path>
+      </svg>
+    {%- when 'tilt' -%}
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 120L0 16.48 0 0 1200 0 1200 120z" class="shape-fill"></path>
+      </svg>
+    {%- when 'layered-waves' -%}
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+      </svg>
+    {%- when 'animated-waves' -%}
+      <svg class="editorial-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+        <defs>
+          <path id="gentle-wave-{{ section.id }}" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax-waves">
+          <use href="#gentle-wave-{{ section.id }}" x="48" y="0" class="shape-fill" opacity="0.2" />
+          <use href="#gentle-wave-{{ section.id }}" x="48" y="3" class="shape-fill" opacity="0.4" />
+          <use href="#gentle-wave-{{ section.id }}" x="48" y="5" class="shape-fill" opacity="0.6" />
+          <use href="#gentle-wave-{{ section.id }}" x="48" y="7" class="shape-fill" />
+        </g>
+      </svg>
+  {%- endcase -%}
+</div>
+
+{% schema %}
+{
+  "name": "Section Divider",
+  "settings": [
+    {
+      "type": "select",
+      "id": "shape",
+      "label": "Divider Shape",
+      "default": "wave",
+      "options": [
+        {
+          "value": "wave",
+          "label": "Wave"
+        },
+        {
+          "value": "curve",
+          "label": "Curve"
+        },
+        {
+          "value": "angle",
+          "label": "Angle"
+        },
+        {
+          "value": "tilt",
+          "label": "Tilt"
+        },
+        {
+          "value": "layered-waves",
+          "label": "Layered Waves (Static)"
+        },
+        {
+          "value": "animated-waves",
+          "label": "Live Animated Waves 🌊"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Shape Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Settings"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 10,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "Height",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": -150,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Top",
+      "default": -75,
+      "info": "Use negative margin to overlap the section above."
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": -150,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin Bottom",
+      "default": 0,
+      "info": "Use negative margin to overlap the section below."
+    },
+    {
+      "type": "header",
+      "content": "Mobile Settings"
+    },
+    {
+      "type": "range",
+      "id": "height_mobile",
+      "min": 10,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Height",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": -150,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Margin Top",
+      "default": -35
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": -150,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Mobile Margin Bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Orientation & Animation Options"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_horizontal",
+      "label": "Flip Horizontal",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_vertical",
+      "label": "Flip Vertical",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "animation_direction",
+      "label": "Animation Direction",
+      "default": "left",
+      "info": "Only applies if 'Live Animated Waves' is selected.",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "animation_speed",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "unit": "s",
+      "label": "Animation Speed",
+      "default": 15,
+      "info": "Lower number = faster animation. Only applies if 'Live Animated Waves' is selected."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Section Divider"
+    }
+  ]
+}
+{% endschema %}

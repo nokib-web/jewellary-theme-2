@@ -1,0 +1,599 @@
+{%- style -%}
+.prismara-wrapper { margin: 0; padding: 0; box-sizing: border-box; }
+.prismara-container { display: flex; width: 100%; height: 100vh; overflow: hidden; position: relative; background-color: var(--right-bg-color, #c2b2a2); transition: background-color 1.2s ease; }
+/* Left Panel */
+.prismara-left { width: 50%; height: 100%; position: relative; overflow: hidden; z-index: 2; }
+.p-bg-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; pointer-events: none; overflow: hidden; }
+.p-bg-slide img, .p-bg-slide video { width: 100%; height: 100%; object-fit: cover; transform: scale(1); }
+.p-bg-slide.is-active { opacity: 1; visibility: visible; pointer-events: auto; }
+.p-bg-slide.is-active img, .p-bg-slide.is-active video { animation: pKenBurns 15s ease-out forwards; }
+@keyframes pKenBurns { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+.prismara-left-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }}); z-index: 5; pointer-events: none; }
+.prismara-content-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
+.p-content-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 10%; opacity: 0; visibility: hidden; align-items: {{ section.settings.text_alignment }}; text-align: {% if section.settings.text_alignment == 'center' %}center{% elsif section.settings.text_alignment == 'flex-end' %}right{% else %}left{% endif %}; }
+.p-content-slide.is-active { opacity: 1; visibility: visible; }
+
+.p-category { font-family: var(--font-heading-family); font-size: {{ section.settings.heading_size }}rem; font-weight: 700; text-transform: uppercase; color: {{ section.settings.heading_color }}; line-height: 1; margin: 0; letter-spacing: -1px; }
+.p-subtitle { font-family: serif; font-size: {{ section.settings.subtitle_size }}rem; color: {{ section.settings.subtitle_color }}; margin-top: 15px; font-style: italic; letter-spacing: 1px; }
+.p-socials { position: absolute; bottom: 40px; left: 40px; z-index: 15; display: flex; gap: 20px; }
+.p-socials a { color: {{ section.settings.social_color }}; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; transition: opacity 0.3s; }
+.p-socials a:hover { opacity: 1; }
+
+/* Right Panel */
+.prismara-right { width: 50%; height: 100%; position: relative; overflow: hidden; z-index: 1; }
+.prismara-arch-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+
+/* FIX FOR OVERLAP: Adjust padding to separate arch and details vertically */
+.p-arch-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding-bottom: 5vh; opacity: 0; visibility: hidden; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15)); }
+.p-arch-slide.is-active { opacity: 1; visibility: visible; }
+
+/* Mask container for reveal animation */
+.p-arch-mask { position: relative; clip-path: inset(-50px -50px -{{ section.settings.arch_outline_offset }}px -50px); }
+
+/* Customizable Arch */
+.p-arch { position: relative; width: {{ section.settings.arch_width }}px; height: {{ section.settings.arch_height }}px; }
+.p-arch img { width: 100%; height: 100%; object-fit: cover; border-radius: {{ section.settings.arch_width | divided_by: 2 }}px {{ section.settings.arch_width | divided_by: 2 }}px 0 0; }
+.p-arch::after { content: ''; position: absolute; top: -{{ section.settings.arch_outline_offset }}px; left: -{{ section.settings.arch_outline_offset }}px; right: -{{ section.settings.arch_outline_offset }}px; bottom: -{{ section.settings.arch_outline_offset }}px; border: 1px solid {{ section.settings.arch_outline_color }}; border-radius: {{ section.settings.arch_width | divided_by: 2 | plus: section.settings.arch_outline_offset }}px {{ section.settings.arch_width | divided_by: 2 | plus: section.settings.arch_outline_offset }}px 0 0; pointer-events: none; }
+
+.prismara-details-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+.p-details-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: calc(47.5vh + {{ section.settings.arch_height | divided_by: 2 }}px + 40px); padding-bottom: 0; opacity: 0; visibility: hidden; pointer-events: auto; }
+.p-details-slide.is-active { opacity: 1; visibility: visible; }
+
+.p-desc { color: {{ section.settings.description_color }}; max-width: 420px; text-align: center; margin-bottom: 30px; font-size: {{ section.settings.desc_size }}rem; line-height: 1.6; font-weight: 500; letter-spacing: 0.5px; }
+.p-btn { border: 2px solid {{ section.settings.btn_border_color }}; color: {{ section.settings.btn_text_color }}; padding: 14px 45px; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; font-weight: 700; transition: all 0.3s; background: transparent; display: inline-block; }
+.p-btn:hover { background: {{ section.settings.btn_hover_bg }}; color: {{ section.settings.btn_hover_text }}; }
+
+.p-nav { position: absolute; bottom: 40px; right: 60px; z-index: 20; display: flex; flex-direction: column; gap: 10px; }
+.p-nav-btn { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); background: transparent; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+.p-nav-btn:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+.p-nav-btn svg { width: 20px; height: 20px; fill: currentColor; }
+
+/* --- KINETIC ANIMATIONS --- */
+.p-bg-slide.move-down-out, .p-content-slide.move-down-out { animation: leftOutDown 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 1; }
+.p-bg-slide.move-down-in, .p-content-slide.move-down-in { animation: leftInDown 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 2; opacity: 1; visibility: visible; }
+@keyframes leftOutDown { 100% { transform: translateY(100%); } }
+@keyframes leftInDown { 0% { transform: translateY(-100%); } 100% { transform: translateY(0); } }
+
+.p-bg-slide.move-up-out, .p-content-slide.move-up-out { animation: leftOutUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 1; }
+.p-bg-slide.move-up-in, .p-content-slide.move-up-in { animation: leftInUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 2; opacity: 1; visibility: visible; }
+@keyframes leftOutUp { 100% { transform: translateY(-100%); } }
+@keyframes leftInUp { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+
+/* Masked Arch Animations */
+.p-arch-slide.move-up-out { animation: fadeOut 1.2s forwards; z-index: 1; }
+.p-arch-slide.move-up-in { animation: fadeIn 1.2s forwards; z-index: 2; opacity: 1; visibility: visible; }
+.p-arch-slide.move-up-out .p-arch { animation: archMaskOutUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+.p-arch-slide.move-up-in .p-arch { animation: archMaskInUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+
+.p-arch-slide.move-down-out { animation: fadeOut 1.2s forwards; z-index: 1; }
+.p-arch-slide.move-down-in { animation: fadeIn 1.2s forwards; z-index: 2; opacity: 1; visibility: visible; }
+.p-arch-slide.move-down-out .p-arch { animation: archMaskOutDown 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+.p-arch-slide.move-down-in .p-arch { animation: archMaskInDown 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; }
+
+@keyframes archMaskOutUp { 100% { transform: translateY(-110%); } }
+@keyframes archMaskInUp { 0% { transform: translateY(110%); } 100% { transform: translateY(0); } }
+@keyframes archMaskOutDown { 100% { transform: translateY(110%); } }
+@keyframes archMaskInDown { 0% { transform: translateY(-110%); } 100% { transform: translateY(0); } }
+@keyframes fadeOut { 100% { opacity: 0; visibility: hidden; } }
+@keyframes fadeIn { 0% { opacity: 0; } 100% { opacity: 1; } }
+
+/* Details text animations */
+.p-details-slide.move-up-out { animation: rightOutUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 1; }
+.p-details-slide.move-up-in { animation: rightInUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 2; opacity: 1; visibility: visible; }
+.p-details-slide.move-down-out { animation: rightOutDown 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 1; }
+.p-details-slide.move-down-in { animation: rightInDown 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards; z-index: 2; opacity: 1; visibility: visible; }
+
+@keyframes rightOutUp { 100% { transform: translateY(-100%); } }
+@keyframes rightInUp { 0% { transform: translateY(100%); } 100% { transform: translateY(0); } }
+@keyframes rightOutDown { 100% { transform: translateY(100%); } }
+@keyframes rightInDown { 0% { transform: translateY(-100%); } 100% { transform: translateY(0); } }
+
+/* Mobile Adjustments */
+@media (max-width: 900px) {
+  .prismara-container { flex-direction: column; height: auto; min-height: 100vh; }
+  .prismara-left { width: 100%; height: 45vh; min-height: 350px; z-index: auto; }
+  .prismara-right { width: 100%; height: 55vh; min-height: 450px; padding-top: 0; overflow: visible; z-index: auto; }
+  
+  .p-content-slide { justify-content: flex-start; padding-top: 10vh; }
+  .p-category { font-size: {{ section.settings.heading_size_mobile }}rem; }
+  .p-subtitle { font-size: {{ section.settings.subtitle_size_mobile }}rem; margin-top: 5px; }
+  
+  .p-arch-slide { align-items: flex-start; top: -{{ section.settings.arch_height_mobile | times: 0.4 }}px; padding-bottom: 0; }
+  .p-arch-mask { clip-path: inset(-30px -30px -{{ section.settings.arch_outline_offset_mobile }}px -30px); }
+  .p-arch { width: {{ section.settings.arch_width_mobile }}px; height: {{ section.settings.arch_height_mobile }}px; }
+  .p-arch img { border-radius: {{ section.settings.arch_width_mobile | divided_by: 2 }}px {{ section.settings.arch_width_mobile | divided_by: 2 }}px 0 0; }
+  .p-arch::after { top: -{{ section.settings.arch_outline_offset_mobile }}px; left: -{{ section.settings.arch_outline_offset_mobile }}px; right: -{{ section.settings.arch_outline_offset_mobile }}px; bottom: -{{ section.settings.arch_outline_offset_mobile }}px; border-radius: {{ section.settings.arch_width_mobile | divided_by: 2 | plus: section.settings.arch_outline_offset_mobile }}px {{ section.settings.arch_width_mobile | divided_by: 2 | plus: section.settings.arch_outline_offset_mobile }}px 0 0; }
+  
+  .p-details-slide { justify-content: flex-start; padding-top: calc({{ section.settings.arch_height_mobile | times: 0.6 }}px + 30px); padding-bottom: 0; }
+  .p-desc { font-size: {{ section.settings.desc_size_mobile }}rem; max-width: 90%; margin-bottom: 25px; }
+  .p-btn { padding: 12px 35px; font-size: 0.85rem; border-width: 2px; }
+  
+  .p-nav { bottom: 30px; left: 50%; transform: translateX(-50%); flex-direction: row; right: auto; gap: 20px; }
+  .p-nav-btn { width: auto; height: auto; border: none; background: transparent; padding: 10px; }
+  .p-nav-btn:hover { border: none; background: transparent; opacity: 0.7; }
+  .p-nav-btn svg { width: 24px; height: 24px; }
+  
+  .p-socials { display: none; }
+}
+{%- endstyle -%}
+
+<prismara-slider class="prismara-wrapper">
+  {%- assign first_bg = section.blocks.first.settings.bg_color | default: '#c2b2a2' -%}
+  <div class="prismara-container" style="--right-bg-color: {{ first_bg }};">
+    
+    <!-- LEFT PANEL (35%) -->
+    <div class="prismara-left">
+      <!-- Backgrounds -->
+      <div class="prismara-bg-container">
+        {%- for block in section.blocks -%}
+          <div class="p-bg-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+            {%- if block.settings.bg_video != blank -%}
+              {{ block.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, controls: false }}
+            {%- elsif block.settings.bg_image != blank -%}
+              <img src="{{ block.settings.bg_image | image_url: width: 1000 }}" alt="{{ block.settings.category | escape }}">
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+      <div class="prismara-left-overlay"></div>
+
+      <!-- Text Overlay -->
+      <div class="prismara-content-container">
+        {%- for block in section.blocks -%}
+          <div class="p-content-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+            <h2 class="p-category">{{ block.settings.category }}</h2>
+            <p class="p-subtitle">{{ block.settings.subtitle }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Socials (Static) -->
+      {%- if section.settings.show_socials -%}
+        <div class="p-socials">
+          <a href="#">Facebook</a>
+          <a href="#">YouTube</a>
+          <a href="#">Instagram</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- RIGHT PANEL (50%) -->
+    <div class="prismara-right">
+      <!-- Arched Frames -->
+      <div class="prismara-arch-container">
+        {%- for block in section.blocks -%}
+          <div class="p-arch-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+            <div class="p-arch-mask">
+              <div class="p-arch">
+                {%- if block.settings.product_image != blank -%}
+                  <img src="{{ block.settings.product_image | image_url: width: 800 }}" alt="{{ block.settings.category | escape }}">
+                {%- else -%}
+                  {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Details (Desc & Button) -->
+      <div class="prismara-details-container">
+        {%- for block in section.blocks -%}
+          <div class="p-details-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}" data-bg-color="{{ block.settings.bg_color }}">
+            <div class="p-desc">{{ block.settings.description }}</div>
+            {%- if block.settings.button_label != blank -%}
+              <a href="{{ block.settings.button_link }}" class="p-btn">{{ block.settings.button_label }}</a>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Navigation -->
+      {%- if section.blocks.size > 1 -%}
+        <div class="p-nav">
+          <button class="p-nav-btn p-nav-prev" aria-label="Previous">
+            <svg viewBox="0 0 24 24"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/></svg>
+          </button>
+          <button class="p-nav-btn p-nav-next" aria-label="Next">
+            <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+          </button>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</prismara-slider>
+
+<script>
+if (!customElements.get('prismara-slider')) {
+  class PrismaraSlider extends HTMLElement {
+    constructor() {
+      super();
+      this.currentIndex = 0;
+      this.isAnimating = false;
+      this.slidesCount = this.querySelectorAll('.p-bg-slide').length;
+      
+      this.leftSlides = this.querySelectorAll('.p-bg-slide');
+      this.leftTexts = this.querySelectorAll('.p-content-slide');
+      this.rightArches = this.querySelectorAll('.p-arch-slide');
+      this.rightDetails = this.querySelectorAll('.p-details-slide');
+      
+      this.prevBtn = this.querySelector('.p-nav-prev');
+      this.nextBtn = this.querySelector('.p-nav-next');
+      this.container = this.querySelector('.prismara-container');
+      
+      this.bindEvents();
+    }
+
+    bindEvents() {
+      if(this.prevBtn) this.prevBtn.addEventListener('click', () => this.navigate('prev'));
+      if(this.nextBtn) this.nextBtn.addEventListener('click', () => this.navigate('next'));
+      
+      // Wheel Event for scrolling
+      this.addEventListener('wheel', (e) => {
+        if(this.isAnimating) {
+          e.preventDefault();
+          return;
+        }
+        if(e.deltaY > 40) {
+          if(this.currentIndex < this.slidesCount - 1) {
+            e.preventDefault();
+            this.navigate('next');
+          }
+        } else if (e.deltaY < -40) {
+          if(this.currentIndex > 0) {
+            e.preventDefault();
+            this.navigate('prev');
+          }
+        }
+      }, { passive: false });
+    }
+
+    updateBackground() {
+      const activeSlide = this.rightDetails[this.currentIndex];
+      if(activeSlide) {
+        const bgColor = activeSlide.getAttribute('data-bg-color') || '#c2b2a2';
+        this.container.style.setProperty('--right-bg-color', bgColor);
+      }
+    }
+
+    navigate(direction) {
+      if (this.isAnimating) return;
+      
+      // Determine index based on direction
+      const nextIndex = direction === 'next' ? this.currentIndex + 1 : this.currentIndex - 1;
+      
+      // Optional: Loop around if at ends
+      // if (nextIndex >= this.slidesCount) nextIndex = 0;
+      // if (nextIndex < 0) nextIndex = this.slidesCount - 1;
+      
+      if (nextIndex < 0 || nextIndex >= this.slidesCount) return;
+
+      this.isAnimating = true;
+      
+      // Determine animation classes
+      // NEXT: Left moves Down (out-down/in-down), Right moves Up (out-up/in-up)
+      // PREV: Left moves Up (out-up/in-up), Right moves Down (out-down/in-down)
+      const outClassLeft = direction === 'next' ? 'move-down-out' : 'move-up-out';
+      const inClassLeft = direction === 'next' ? 'move-down-in' : 'move-up-in';
+      
+      const outClassRight = direction === 'next' ? 'move-up-out' : 'move-down-out';
+      const inClassRight = direction === 'next' ? 'move-up-in' : 'move-down-in';
+
+      // Apply classes to Left
+      this.leftSlides[this.currentIndex].classList.add(outClassLeft);
+      this.leftTexts[this.currentIndex].classList.add(outClassLeft);
+      this.leftSlides[nextIndex].classList.add(inClassLeft, 'is-active');
+      this.leftTexts[nextIndex].classList.add(inClassLeft, 'is-active');
+
+      // Apply classes to Right
+      this.rightArches[this.currentIndex].classList.add(outClassRight);
+      this.rightDetails[this.currentIndex].classList.add(outClassRight);
+      this.rightArches[nextIndex].classList.add(inClassRight, 'is-active');
+      this.rightDetails[nextIndex].classList.add(inClassRight, 'is-active');
+
+      const prevIndex = this.currentIndex;
+      this.currentIndex = nextIndex;
+      this.updateBackground();
+
+      // Clean up after animation finishes (1.2s matching CSS)
+      setTimeout(() => {
+        [this.leftSlides, this.leftTexts, this.rightArches, this.rightDetails].forEach(nodeList => {
+          nodeList[prevIndex].classList.remove('is-active', 'move-down-out', 'move-up-out', 'move-down-in', 'move-up-in');
+          nodeList[this.currentIndex].classList.remove('move-down-in', 'move-up-in');
+        });
+        this.isAnimating = false;
+      }, 1250);
+    }
+  }
+  customElements.define('prismara-slider', PrismaraSlider);
+}
+</script>
+
+{% schema %}
+{
+  "name": "Prismara Hero Slider",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_socials",
+      "label": "Show Social Links",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Overlay & Opacity"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Left Panel Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Left Panel Alignment"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Typography Colors"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#c5a880"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "social_color",
+      "label": "Social Links Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button Colors"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border Color",
+      "default": "#c5a880"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#c5a880"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Button Hover Text",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Typography Sizes"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Size (rem)",
+      "min": 2, "max": 8, "step": 0.5, "default": 5.0
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size",
+      "label": "Subtitle Size (rem)",
+      "min": 1, "max": 3, "step": 0.1, "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "desc_size",
+      "label": "Description Size (rem)",
+      "min": 0.8, "max": 2, "step": 0.1, "default": 1.1
+    },
+    {
+      "type": "header",
+      "content": "Mobile Typography Sizes"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading Size (rem)",
+      "min": 1.5, "max": 5, "step": 0.5, "default": 3.5
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "label": "Subtitle Size (rem)",
+      "min": 0.8, "max": 2.5, "step": 0.1, "default": 1.2
+    },
+    {
+      "type": "range",
+      "id": "desc_size_mobile",
+      "label": "Description Size (rem)",
+      "min": 0.8, "max": 1.8, "step": 0.1, "default": 1.0
+    },
+    {
+      "type": "header",
+      "content": "Desktop Arch Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "arch_width",
+      "label": "Arch Width (px)",
+      "min": 200, "max": 600, "step": 10, "default": 320
+    },
+    {
+      "type": "range",
+      "id": "arch_height",
+      "label": "Arch Height (px)",
+      "min": 300, "max": 800, "step": 10, "default": 480
+    },
+    {
+      "type": "range",
+      "id": "arch_outline_offset",
+      "label": "Arch Outline Offset",
+      "min": 5, "max": 30, "step": 1, "default": 15
+    },
+    {
+      "type": "color",
+      "id": "arch_outline_color",
+      "label": "Arch Outline Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Arch Dimensions"
+    },
+    {
+      "type": "range",
+      "id": "arch_width_mobile",
+      "label": "Arch Width (px)",
+      "min": 150, "max": 400, "step": 10, "default": 160
+    },
+    {
+      "type": "range",
+      "id": "arch_height_mobile",
+      "label": "Arch Height (px)",
+      "min": 200, "max": 600, "step": 10, "default": 240
+    },
+    {
+      "type": "range",
+      "id": "arch_outline_offset_mobile",
+      "label": "Arch Outline Offset",
+      "min": 5, "max": 30, "step": 1, "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Left Panel (Background & Titles)"
+        },
+        {
+          "type": "image_picker",
+          "id": "bg_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "video",
+          "id": "bg_video",
+          "label": "Background Video"
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Large Title",
+          "default": "Rings"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Gold Subtitle",
+          "default": "A Circle of Perfection"
+        },
+        {
+          "type": "header",
+          "content": "Right Panel (Arch & Description)"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Panel Background Color",
+          "default": "#c2b2a2"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Arch Product Image"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Celebrate every milestone with a ring that tells your story."
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button Label",
+          "default": "Shop Rings"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Prismara Hero Slider",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "category": "Necklaces",
+            "subtitle": "Grace Redefined",
+            "bg_color": "#8c7356",
+            "description": "Elevate every look with our exquisite necklaces. From pendants to chokers, these designs add sophistication.",
+            "button_label": "Shop Necklaces"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "category": "Rings",
+            "subtitle": "A Circle of Perfection",
+            "bg_color": "#c2b2a2",
+            "description": "Celebrate every milestone with a ring that tells your story.",
+            "button_label": "Shop Rings"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

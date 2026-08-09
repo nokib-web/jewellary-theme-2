@@ -1,0 +1,341 @@
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+
+<style>
+  .story-banner-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 80px 20px;
+    background-color: {{ section.settings.bg_color }};
+  }
+  
+  .story-banner__bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .story-banner__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: zoomInOut 20s infinite alternate ease-in-out;
+  }
+
+  @keyframes zoomInOut {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.15); }
+  }
+
+  .story-banner__content-box {
+    position: relative;
+    z-index: 3;
+    max-width: {{ section.settings.content_width }}px;
+    background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 8px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+    padding: 80px 80px;
+    text-align: {{ section.settings.text_align }};
+    width: 100%;
+  }
+
+  .story-banner__text {
+    font-size: {{ section.settings.text_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.primary_text_color }};
+    margin-bottom: 30px;
+  }
+
+  .story-banner__text strong {
+    color: {{ section.settings.secondary_text_color }};
+    font-weight: normal; /* Removes bold styling so it just changes color */
+  }
+
+  .story-banner__button {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+  }
+
+  .story-banner__button--underline {
+    color: {{ section.settings.button_color }};
+    border-bottom: 1px solid {{ section.settings.button_color }};
+    padding-bottom: 5px;
+  }
+  
+  .story-banner-{{ section.id }} .story-banner__button--underline:hover {
+    color: {{ section.settings.button_hover_color }} !important;
+    border-bottom-color: {{ section.settings.button_hover_color }} !important;
+    opacity: 0.8;
+  }
+
+  .story-banner__button--solid {
+    color: {{ section.settings.button_color }};
+    background-color: {{ section.settings.button_bg_color }};
+    padding: 15px 35px;
+    border-radius: 50px;
+    border: 1px solid {{ section.settings.button_bg_color }};
+    font-weight: 600;
+  }
+
+  .story-banner-{{ section.id }} .story-banner__button--solid:hover {
+    color: {{ section.settings.button_hover_color }} !important;
+    background-color: {{ section.settings.button_hover_bg_color }} !important;
+    border-color: {{ section.settings.button_hover_bg_color }} !important;
+  }
+
+  .story-banner__floating-img {
+    position: absolute;
+    z-index: 4;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 30%;
+  }
+
+  .story-banner__floating-img--left {
+    left: -2%;
+  }
+
+  .story-banner__floating-img--right {
+    right: -2%;
+  }
+
+  /* Mobile responsiveness */
+  @media only screen and (max-width: 768px) {
+    .story-banner-{{ section.id }} {
+      flex-direction: column;
+      padding: 40px 15px;
+      min-height: auto;
+    }
+    
+    .story-banner__floating-img {
+      position: relative;
+      top: auto;
+      transform: none;
+      left: auto;
+      right: auto;
+      margin: 20px auto;
+      max-width: 70%;
+      z-index: 3;
+    }
+
+    .story-banner__content-box {
+      padding: 45px 30px;
+      text-align: left;
+    }
+    
+    .story-banner__text {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
+<div class="story-banner-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="story-banner">
+  
+  <div class="story-banner__bg-wrapper">
+    {%- if section.settings.bg_image != blank -%}
+      <img class="story-banner__bg-image lazyload"
+           data-src="{{ section.settings.bg_image | img_url: 'master' }}"
+           alt="{{ section.settings.bg_image.alt | escape }}">
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.left_image != blank -%}
+    <img class="story-banner__floating-img story-banner__floating-img--left lazyload"
+         data-src="{{ section.settings.left_image | img_url: '800x' }}"
+         alt="{{ section.settings.left_image.alt | escape }}">
+  {%- endif -%}
+
+  <div class="story-banner__content-box">
+    {%- if section.settings.text != blank -%}
+      <div class="story-banner__text">
+        {{ section.settings.text }}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="story-banner__button story-banner__button--{{ section.settings.button_style }}">
+        {{ section.settings.button_label | remove: '->' | remove: '->' | strip }}{%- if section.settings.button_style == 'underline' -%} &rarr;{%- endif -%}
+      </a>
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.right_image != blank -%}
+    <img class="story-banner__floating-img story-banner__floating-img--right lazyload"
+         data-src="{{ section.settings.right_image | img_url: '800x' }}"
+         alt="{{ section.settings.right_image.alt | escape }}">
+  {%- endif -%}
+  
+</div>
+
+{%- if section.settings.divider -%}</div>{%- endif -%}
+
+{% schema %}
+{
+  "name": "Story Banner",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Floating Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Floating Image"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text Size (Desktop)",
+      "default": 24,
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text Content",
+      "info": "Use 'Bold' text to apply the secondary text color.",
+      "default": "<p>We believe jewelry is more than an accessory—it’s a story of individuality and style. Our curated collection blends timeless craftsmanship with modern design, <strong>creating pieces that empower you to express your unique elegance every day.</strong></p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "OUR STORY"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Styling & Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Text Box Max Width",
+      "default": 800,
+      "min": 400,
+      "max": 1200,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Text Box Background Opacity",
+      "default": 30,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "primary_text_color",
+      "label": "Primary Text Color",
+      "default": "#d4af37"
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "Secondary Text Color (Bold Text)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Button Styling"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "default": "underline",
+      "options": [
+        { "value": "underline", "label": "Underline Link" },
+        { "value": "solid", "label": "Solid Button" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color (Solid only)",
+      "default": "#C8A26A"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button Hover Text Color",
+      "default": "#C8A26A"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg_color",
+      "label": "Button Hover Background (Solid only)",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "Show section divider",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Banner"
+    }
+  ]
+}
+{% endschema %}

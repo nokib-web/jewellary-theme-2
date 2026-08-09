@@ -1,0 +1,544 @@
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+
+{%- style -%}
+  .layered-showcase-{{ section.id }} {
+    --bg-color: {{ section.settings.bg_color }};
+    --text-color: {{ section.settings.text_color }};
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+    --img-radius: {{ section.settings.image_radius }}px;
+    
+    /* Animation settings */
+    --init-opacity: {{ section.settings.initial_opacity }};
+    --init-blur: {{ section.settings.initial_blur }}px;
+    --init-grayscale: {{ section.settings.initial_grayscale }}%;
+    --hover-scale: {{ section.settings.hover_scale | times: 0.01 }};
+    --transition-speed: {{ section.settings.transition_speed | replace: ",", "." }}s;
+  }
+
+  .layered-showcase-{{ section.id }} {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: var(--padding-top) 40px var(--padding-bottom) 40px;
+    overflow: hidden;
+  }
+
+  .layered-showcase__wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: {% if section.settings.layout == 'left' %}row{% else %}row-reverse{% endif %};
+    align-items: center;
+    gap: 60px;
+  }
+
+  /* Image Column */
+  .layered-showcase__media {
+    flex: 0 0 52%;
+    width: 52%;
+    position: relative;
+  }
+
+  /* Overlapping Image Stack Wrapper */
+  .layered-showcase__stack {
+    position: relative;
+    width: 100%;
+    padding-bottom: 95%; /* Responsive 1:1.05 Aspect Ratio Box */
+    display: block;
+  }
+
+  /* Individual Stack Items */
+  .layered-showcase__img-item {
+    position: absolute;
+    overflow: hidden;
+    border-radius: var(--img-radius);
+    transition: opacity var(--transition-speed) ease, filter var(--transition-speed) ease, transform var(--transition-speed) cubic-bezier(0.16, 1, 0.3, 1);
+    background: #e0e0e0;
+    {% if section.settings.image_shadow %}
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    {% endif %}
+  }
+
+  .layered-showcase__img-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-speed) cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Image 1: Top-Left Background (Or Top-Right depending on column orientation) */
+  .layered-showcase__img-item--1 {
+    width: 44%;
+    height: 62%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: var(--init-opacity);
+    filter: grayscale(var(--init-grayscale)) blur(var(--init-blur));
+    transform: translate(15%, 15%);
+  }
+
+  /* Image 2: Center Foreground (Main image, always fully clear) */
+  .layered-showcase__img-item--2 {
+    width: 53%;
+    height: 72%;
+    top: 14%;
+    left: 23.5%;
+    z-index: 3;
+    opacity: 1;
+    filter: none;
+    border: 6px solid var(--bg-color); /* Separator border matching background */
+    {% if section.settings.image_shadow %}
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+    {% endif %}
+  }
+
+  /* Image 3: Bottom-Right Background */
+  .layered-showcase__img-item--3 {
+    width: 44%;
+    height: 62%;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    opacity: var(--init-opacity);
+    filter: grayscale(var(--init-grayscale)) blur(var(--init-blur));
+    transform: translate(-15%, -15%);
+  }
+
+  /* Viewport Triggered Entrance Animations */
+  .layered-showcase-{{ section.id }}.in-viewport .layered-showcase__img-item--1,
+  .layered-showcase-{{ section.id }}.in-viewport .layered-showcase__img-item--3 {
+    opacity: 1;
+    filter: grayscale(0%) blur(0);
+    transform: translate(0, 0);
+  }
+
+  /* Micro-interactions: Zoom on hover */
+  .layered-showcase__img-item:hover img {
+    transform: scale(var(--hover-scale));
+  }
+
+  /* Text Column */
+  .layered-showcase__content {
+    flex: 0 0 calc(48% - 60px);
+    width: calc(48% - 60px);
+    text-align: {{ section.settings.align_text }};
+  }
+
+  .layered-showcase__eyebrow {
+    color: #888888;
+    margin-bottom: 15px;
+    display: block;
+  }
+
+  .layered-showcase__heading {
+    margin: 0 0 25px 0;
+  }
+
+  .layered-showcase__desc {
+    margin-bottom: 35px;
+    opacity: 0.85;
+  }
+
+  .layered-showcase__desc p {
+    margin: 0 0 15px 0;
+  }
+  .layered-showcase__desc p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Buttons Customization */
+  .layered-showcase__btn {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .layered-showcase__btn--solid {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    padding: 15px 35px;
+    border-radius: {{ section.settings.btn_radius }}px;
+  }
+
+  .layered-showcase__btn--solid:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+  }
+
+  .layered-showcase__btn--underline {
+    color: var(--text-color);
+    padding-bottom: 5px;
+    border-bottom: 2px solid var(--text-color);
+  }
+
+  .layered-showcase__btn--underline:hover {
+    border-bottom-color: transparent;
+    opacity: 0.75;
+  }
+
+  /* Responsive / Mobile Layout */
+  @media only screen and (max-width: 900px) {
+    .layered-showcase-{{ section.id }} {
+      padding: 40px 20px;
+    }
+    .layered-showcase__wrapper {
+      flex-direction: column;
+      gap: 40px;
+    }
+    .layered-showcase__media {
+      width: 100%;
+      flex: 0 0 100%;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .layered-showcase__content {
+      width: 100%;
+      flex: 0 0 100%;
+      text-align: center;
+    }
+  }
+{%- endstyle -%}
+
+<div id="LayeredShowcase-{{ section.id }}" class="layered-showcase-{{ section.id }}">
+  <div class="layered-showcase__wrapper">
+    
+    <!-- Left Column: Overlapping Images -->
+    <div class="layered-showcase__media">
+      <div class="layered-showcase__stack">
+        
+        <!-- Image 1 (Top-Left Background) -->
+        <div class="layered-showcase__img-item layered-showcase__img-item--1">
+          {%- if section.settings.image_1 != blank -%}
+            {%- assign img_url1 = section.settings.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="lazyload"
+                 data-src="{{ img_url1 }}"
+                 data-widths="[180, 360, 540, 720]"
+                 data-aspectratio="{{ section.settings.image_1.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ section.settings.image_1.alt | escape }}">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+
+        <!-- Image 2 (Center Foreground - Main) -->
+        <div class="layered-showcase__img-item layered-showcase__img-item--2">
+          {%- if section.settings.image_2 != blank -%}
+            {%- assign img_url2 = section.settings.image_2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="lazyload"
+                 data-src="{{ img_url2 }}"
+                 data-widths="[180, 360, 540, 720]"
+                 data-aspectratio="{{ section.settings.image_2.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ section.settings.image_2.alt | escape }}">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+
+        <!-- Image 3 (Bottom-Right Background) -->
+        <div class="layered-showcase__img-item layered-showcase__img-item--3">
+          {%- if section.settings.image_3 != blank -%}
+            {%- assign img_url3 = section.settings.image_3 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            <img class="lazyload"
+                 data-src="{{ img_url3 }}"
+                 data-widths="[180, 360, 540, 720]"
+                 data-aspectratio="{{ section.settings.image_3.aspect_ratio }}"
+                 data-sizes="auto"
+                 alt="{{ section.settings.image_3.alt | escape }}">
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Column: Text & Content -->
+    <div class="layered-showcase__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="subheading layered-showcase__eyebrow">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="h1 layered-showcase__heading">{{ section.settings.title }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <div class="layered-showcase__desc rte">{{ section.settings.text }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+        <a href="{{ section.settings.button_link }}" class="layered-showcase__btn {% if section.settings.button_style == 'solid' %}layered-showcase__btn--solid{% else %}layered-showcase__btn--underline{% endif %}">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script>
+  (function() {
+    function initLayeredShowcase() {
+      const section = document.getElementById('LayeredShowcase-{{ section.id }}');
+      if (!section || section.dataset.observed === 'true') return;
+      section.dataset.observed = 'true';
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            section.classList.add('in-viewport');
+            observer.unobserve(section); // Stop observing once animated
+          }
+        });
+      }, {
+        threshold: 0.05,
+        rootMargin: '0px'
+      });
+
+      observer.observe(section);
+    }
+
+    // Call immediately since the script is placed inline below the DOM elements
+    initLayeredShowcase();
+
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        initLayeredShowcase();
+      }
+    });
+  })();
+</script>
+
+
+{%- if section.settings.divider -%}</div>{%- endif -%}
+
+{% schema %}
+{
+  "name": "Layered Images Showcase",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Selection"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1 (Top-Left Background)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2 (Center Foreground)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3 (Bottom-Right Background)"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Image Border Radius",
+      "default": 0,
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_shadow",
+      "label": "Enable Image Shadow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Animation Customization"
+    },
+    {
+      "type": "range",
+      "id": "initial_opacity",
+      "label": "Side Images Initial Opacity",
+      "default": 0.4,
+      "min": 0.1,
+      "max": 0.9,
+      "step": 0.1,
+      "info": "Opacity of top-left and bottom-right images before hovering"
+    },
+    {
+      "type": "range",
+      "id": "initial_blur",
+      "label": "Side Images Initial Blur",
+      "default": 2,
+      "min": 0,
+      "max": 10,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "initial_grayscale",
+      "label": "Side Images Initial Grayscale",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "hover_scale",
+      "label": "Zoom Scale on Hover (%)",
+      "default": 104,
+      "min": 100,
+      "max": 120,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "transition_speed",
+      "label": "Transition Speed",
+      "default": 0.5,
+      "min": 0.3,
+      "max": 2.0,
+      "step": 0.1,
+      "unit": "s"
+    },
+    {
+      "type": "header",
+      "content": "Content Area"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Desktop Layout Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Images Left, Text Right" },
+        { "value": "right", "label": "Text Left, Images Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align_text",
+      "label": "Text Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow / Small Label",
+      "default": "Create Your Dream Jewellery"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Creates lasting memories of each occasion"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Whether you're creating an engagement ring, remodelling a family heirloom, or designing a bespoke piece, our jewellers will guide you through every step.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button settings"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "default": "underline",
+      "options": [
+        { "value": "solid", "label": "Solid Button" },
+        { "value": "underline", "label": "Underline Link" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "label": "Solid Button Border Radius",
+      "default": 4,
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#dcdbdb"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 80,
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 80,
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "checkbox",
+      "id": "divider",
+      "label": "Show section divider",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Layered Images Showcase",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
+{% comment %} Touch file {% endcomment %}

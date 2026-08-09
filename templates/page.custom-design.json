@@ -1,0 +1,73 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "164601355751192455": {
+      "type": "slideshow",
+      "blocks": {
+        "1646013557f2e897f3-0": {
+          "type": "image",
+          "settings": {
+            "top_subheading": "",
+            "title": "custom design",
+            "title_size": 80,
+            "subheading": "",
+            "link": "",
+            "link_text": "",
+            "link_2": "",
+            "link_text_2": "",
+            "color_accent": "rgba(0,0,0,0)",
+            "text_align": "vertical-center horizontal-center",
+            "image": "shopify://shop_images/bench_jeweller_custom_design.jpg",
+            "overlay_opacity": 0,
+            "focal_point": "center center"
+          }
+        }
+      },
+      "block_order": [
+        "1646013557f2e897f3-0"
+      ],
+      "settings": {
+        "section_height": "450px",
+        "mobile_height": "auto",
+        "parallax": true,
+        "style": "bars",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
+    "1646013567576951ce": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/custom_design_ring_sketch.jpg",
+        "image_width": 470,
+        "subtitle": "",
+        "title": "let's create something together",
+        "text": "<p>A significant proportion of the jewellery we sell is made and designed by us. Should you wish to commission a bespoke piece of jewellery, we are able to offer suggestions and ideas on style and suitability. Bespoke engagement and wedding rings are particularly popular.</p><p>You may have your own design in which case we will quote and offer practical tips as necessary. Once we have agreed upon a design, we will show you a choice of gemstones before we start work. Once authorised, we will take a deposit and contact you immediately your jewellery design is completed. If you are looking for design inspiration we can help. Years of design experience coupled with a significant design library are the catalysts that will set you on your way to creating a jewellery masterpiece that is uniquely yours. We invite you to visit our store and sit with us. Together we can create a design as individual as you.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "164601355751192455",
+    "1646013567576951ce"
+  ]
+}

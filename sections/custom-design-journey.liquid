@@ -1,0 +1,239 @@
+{%- style -%}
+  .custom-journey-{{ section.id }} {
+    padding: 100px 0;
+    background-color: {{ section.settings.bg_color }};
+    text-align: center;
+  }
+  .custom-journey-header {
+    max-width: 800px;
+    margin: 0 auto 60px;
+  }
+  .custom-journey-title {
+    font-size: 36px;
+    font-family: var(--typeHeaderPrimary), serif;
+    margin-bottom: 20px;
+    color: {{ section.settings.text_color }};
+  }
+  .custom-journey-subtitle {
+    font-size: 16px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+  .custom-journey-banner-wrap {
+    margin-bottom: 60px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    max-height: 450px;
+  }
+  .custom-journey-banner {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .custom-journey-steps {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .custom-journey-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: {{ section.settings.accent_color }};
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .step-title {
+    font-size: 18px;
+    font-family: var(--typeHeaderPrimary), serif;
+    margin-bottom: 10px;
+    color: {{ section.settings.text_color }};
+  }
+  .step-text {
+    font-size: 14px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+  @media only screen and (max-width: 768px) {
+    .custom-journey-{{ section.id }} {
+      padding: 60px 0;
+    }
+    .custom-journey-banner-wrap {
+      max-height: 300px;
+      margin-bottom: 40px;
+    }
+    .custom-journey-banner {
+      height: 300px;
+    }
+    .custom-journey-steps {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-journey-{{ section.id }}">
+  <div class="page-width">
+    
+    <div class="custom-journey-header">
+      <h2 class="custom-journey-title">{{ section.settings.title }}</h2>
+      <p class="custom-journey-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="custom-journey-banner-wrap">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | img_url: '2000x' }}" alt="Custom Design Journey" class="custom-journey-banner" loading="lazy">
+      {%- else -%}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg custom-journey-banner' }}
+      {%- endif -%}
+    </div>
+
+    <div class="custom-journey-steps">
+      {%- for block in section.blocks -%}
+        <div class="custom-journey-step" {{ block.shopify_attributes }}>
+          <div class="step-number">{{ forloop.index }}</div>
+          <h3 class="step-title">{{ block.settings.title }}</h3>
+          <p class="step-text">{{ block.settings.text }}</p>
+        </div>
+      {%- else -%}
+        <div class="custom-journey-step">
+          <div class="step-number">1</div>
+          <h3 class="step-title">Consultation</h3>
+          <p class="step-text">Meet with our master jewelers to discuss your vision, budget, and diamond selection.</p>
+        </div>
+        <div class="custom-journey-step">
+          <div class="step-number">2</div>
+          <h3 class="step-title">3D Rendering</h3>
+          <p class="step-text">We bring your idea to life with precise 3D CAD models for your review and approval.</p>
+        </div>
+        <div class="custom-journey-step">
+          <div class="step-number">3</div>
+          <h3 class="step-title">Master Crafting</h3>
+          <p class="step-text">Our artisans meticulously cast, set, and polish your unique piece in our workshop.</p>
+        </div>
+        <div class="custom-journey-step">
+          <div class="step-number">4</div>
+          <h3 class="step-title">The Reveal</h3>
+          <p class="step-text">Collect your perfectly crafted, one-of-a-kind ring, ready for a lifetime of memories.</p>
+        </div>
+      {%- endfor -%}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Design Journey",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Step Numbers)",
+      "default": "#d4af37"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "The Bespoke Journey"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "From a spark of imagination to a masterpiece you can wear. Discover how we turn your dream ring into reality."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Image (Leave blank to use default)"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Step Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Description of this step."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Design Journey",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Consultation",
+            "text": "Meet with our master jewelers to discuss your vision, budget, and diamond selection."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "3D Rendering",
+            "text": "We bring your idea to life with precise 3D CAD models for your review and approval."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Master Crafting",
+            "text": "Our artisans meticulously cast, set, and polish your unique piece in our workshop."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "The Reveal",
+            "text": "Collect your perfectly crafted, one-of-a-kind ring, ready for a lifetime of memories."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

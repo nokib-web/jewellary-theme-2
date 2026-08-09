@@ -1,0 +1,139 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "16460105389b2599dd": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/repairs_bb1286d3-decf-4c2c-b4bc-05502f997439.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "JEWELLERY REPAIRS",
+        "text": "<p>If you have broken or damaged jewellery and are looking for a jewellery repair service, we can help. Our jewellers offer a full range of professional jewellery repair services that make it easy for you to once again experience the pleasure of wearing your precious jewellery.</p><p>Our jewellery repair service is competitively priced while maintaining the utmost quality of craftsmanship. This has enabled us to build a reputation for quality and value. Whatever your jewellery repair, rest assured we can help. We invite you to visit our store for an obligation-free quote.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "16460105485cdadade": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/watch_e6529ab4-5ab4-48e4-a548-8596a05e7e92.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "watch & clock repairs",
+        "text": "<p>We specialise in quality watch and clock repairs, servicing all brands at competitive prices. Batteries for all quartz watches are available while you wait. We take pride in the skill of our highly trained watchmakers, who regularly work on both contemporary and vintage timepieces. Despite advances in technology, modern watches still require upkeep, battery and capacitor replacement, rubber gaskets, watch band replacement, glasses, winders, the list goes on. Be assured that the utmost care will be taken with your precious timepiece. Visit us today for a new battery, free repair estimate or, better yet, a brilliant new timepiece for your collection.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "16460109457a0ca54c": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/rrr_929d3c2d-404b-43c5-b4af-422a4f6d795b.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "restoration, remodelling & remakes",
+        "text": "<p>Whether your jewellery is worn daily or just for special occasions, over time it will suffer from wear and tear which requires the attention of a skilled jeweller.</p><p>You may choose to have a family heirloom restored to its former glory, or that dated or unwanted item remodelled or remade. Whatever your preference, we can help. We can use your existing gemstones to create a completely new setting, creating a design of your choosing. For example, we can remodel a ring into a brooch, pendant or earrings. We can source replacements for missing or lost gemstones or match a gemstone for colour and size. We will also re-cut or polish an existing stone.</p><p>We treat all items left with us with extreme care, and they are fully covered by our insurance whilst in our care. To discuss your requirements please contact us to make an appointment.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "164601110382a77644": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/valuations_b54c2322-8dcd-4979-9b71-17efdc83c16b.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "Valuations",
+        "text": "<p>Do you need to have your precious jewellery possessions valued? Whether for insurance replacement, probate, sales between parties, second-hand replacement value purposes, estate valuation or simply to find out what your valuables are currently worth – let us arrange a professional and independent valuation.</p><p>We offer open and transparent pricing with no hidden costs. When you have your jewellery, watches or giftware valued, you’ll find out their current replacement value. You’ll also gain the reassurance that, if anything is lost, damaged or stolen, your insurance claim will be quick and straightforward. Why not call in today for an obligation-free quote?</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "164601131733f8a0cf": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/scrap-gold.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "we buy gold",
+        "text": "<p>If you have scrap pieces of gold, unwanted or damaged jewellery, why not convert it to cash? Our professional staff are fully equipped to test your scrap and quote to convert to cash. Perhaps that damaged jewellery has sentimental value? Well let’s melt your gold down and work together to design a new heirloom from yesterday’s treasures.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "1646011365ef4dbe4f": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/Ring.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "custom design",
+        "text": "<p>A significant proportion of the jewellery we sell is made and designed by us. Should you wish to commission a bespoke piece of jewellery, we are able to offer suggestions and ideas on style and suitability. Bespoke engagement and wedding rings are particularly popular.</p><p>You may have your own design in which case we will quote and offer practical tips as necessary. Once we have agreed upon a design, we will show you a choice of gemstones before we start work. Once authorised, we will take a deposit and contact you immediately when your jewellery design is completed.</p><p>If you are looking for design inspiration we can help. With our years of design experience and extensive design library by your side, you will be well on your way to creating a jewellery masterpiece that is uniquely yours. We invite you to visit our store and sit with us. Together we can create a design as individual as you.</p>",
+        "button_label": "make an appointment",
+        "button_link": "shopify://pages/book-an-appointment",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    },
+    "1646011402c27d118d": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify://shop_images/cleaning_78aa0fef-37c3-4538-b792-1df3a925df2f.jpg",
+        "image_width": 500,
+        "subtitle": "",
+        "title": "care & cleaning",
+        "text": "<p>Proper care and handling of your jewellery can help it maintain its beauty and sparkle for years to come. We recommend an annual inspection to promote early detection of wear and tear, which may assist in avoiding gem loss and clasp failure, etc.</p><p>As well as providing professional jewellery cleaning in store, we also offer specialist products for use at home, with advice on which gems and jewellery are suitable for these products.</p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "primary",
+        "align_text": "left",
+        "layout": "right",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "16460105389b2599dd",
+    "16460105485cdadade",
+    "16460109457a0ca54c",
+    "164601110382a77644",
+    "164601131733f8a0cf",
+    "1646011365ef4dbe4f",
+    "1646011402c27d118d"
+  ]
+}

@@ -1,0 +1,213 @@
+<div class="custom-blog-showcase" style="background-color: {{ section.settings.bg_color }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    
+    <div class="custom-blog-header">
+      <h2 class="h2 custom-blog-title" style="font-family: var(--typeHeaderPrimary), var(--typeHeaderFallback); text-transform: none; letter-spacing: normal;">{{ section.settings.title }}</h2>
+      {%- if section.settings.view_all_text != blank -%}
+        <a href="{{ section.settings.view_all_link }}" class="custom-blog-view-all">
+          &ndash; {{ section.settings.view_all_text }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="custom-blog-content">
+        
+        {%- assign featured_block = section.blocks[0] -%}
+        {%- assign featured_article = articles[featured_block.settings.article] -%}
+        {%- assign featured_image = featured_block.settings.image | default: featured_article.image -%}
+        {%- assign featured_title = featured_block.settings.title | default: featured_article.title -%}
+        
+        <div class="custom-blog-featured">
+          <a href="{{ featured_article.url | default: '#' }}" class="custom-blog-image-link">
+            {%- if featured_image != blank -%}
+              <div class="image-wrap">
+                <div class="grid__image-ratio grid__image-ratio--wide">
+                  {%- assign img_url = featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img class="lazyload"
+                      data-src="{{ img_url }}"
+                      data-widths="[720, 900, 1080, 1500, 2000]"
+                      data-aspectratio="{{ featured_image.aspect_ratio }}"
+                      data-sizes="auto"
+                      alt="{{ featured_image.alt | escape }}">
+                </div>
+              </div>
+            {%- else -%}
+              <div class="image-wrap">
+                <div class="grid__image-ratio grid__image-ratio--wide">
+                  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+              </div>
+            {%- endif -%}
+          </a>
+          <div class="custom-blog-featured-card">
+            {%- if featured_article != blank and featured_article.tags.size > 0 -%}
+              <div class="custom-blog-tag">{{ featured_article.tags[0] }}</div>
+            {%- else -%}
+              <div class="custom-blog-tag">CATEGORY</div>
+            {%- endif -%}
+            
+            <h3 class="custom-blog-article-title"><a href="{{ featured_article.url | default: '#' }}">{{ featured_title | default: 'Featured Article Title' }}</a></h3>
+            
+            <div class="custom-blog-meta">
+              {%- if featured_article != blank -%}
+                {{ featured_article.published_at | date: "%d %B %Y" | upcase }} &bull; 
+                {%- assign words = featured_article.content | strip_html | split: ' ' | size -%}
+                {%- assign read_time = words | divided_by: 250 | at_least: 1 -%}
+                {{ read_time }} MINUTE{% if read_time > 1 %}S{% endif %}
+              {%- else -%}
+                01 JANUARY 2026 &bull; 3 MINUTES
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+
+        {%- if section.blocks.size > 1 -%}
+          <div class="custom-blog-secondary-grid">
+            {%- for block in section.blocks offset: 1 limit: 2 -%}
+              {%- assign article = articles[block.settings.article] -%}
+              {%- assign image = block.settings.image | default: article.image -%}
+              {%- assign title = block.settings.title | default: article.title -%}
+              
+              <div class="custom-blog-secondary-item">
+                <a href="{{ article.url | default: '#' }}" class="custom-blog-image-link">
+                  {%- if image != blank -%}
+                    <div class="image-wrap">
+                      <div class="grid__image-ratio grid__image-ratio--wide">
+                        {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                        <img class="lazyload"
+                            data-src="{{ img_url }}"
+                            data-widths="[360, 540, 720, 900]"
+                            data-aspectratio="{{ image.aspect_ratio }}"
+                            data-sizes="auto"
+                            alt="{{ image.alt | escape }}">
+                      </div>
+                    </div>
+                  {%- else -%}
+                    <div class="image-wrap">
+                      <div class="grid__image-ratio grid__image-ratio--wide">
+                        {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </a>
+                <div class="custom-blog-secondary-card">
+                  {%- if article != blank and article.tags.size > 0 -%}
+                    <div class="custom-blog-tag">{{ article.tags[0] }}</div>
+                  {%- else -%}
+                    <div class="custom-blog-tag">CATEGORY</div>
+                  {%- endif -%}
+                  
+                  <h4 class="custom-blog-article-title"><a href="{{ article.url | default: '#' }}">{{ title | default: 'Example Article Title' }}</a></h4>
+                  
+                  <div class="custom-blog-meta">
+                    {%- if article != blank -%}
+                      {{ article.published_at | date: "%d %B %Y" | upcase }} &bull; 
+                      {%- assign words = article.content | strip_html | split: ' ' | size -%}
+                      {%- assign read_time = words | divided_by: 250 | at_least: 1 -%}
+                      {{ read_time }} MINUTE{% if read_time > 1 %}S{% endif %}
+                    {%- else -%}
+                      01 JANUARY 2026 &bull; 3 MINUTES
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+      </div>
+    {%- else -%}
+      <div class="custom-blog-content">
+        <p style="text-align:center;">Please add article blocks in the theme editor.</p>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Blog Showcase",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Gregory Journal"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View all link text",
+      "default": "View all news and events"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View all link url (optional)"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Select Article"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image Override",
+          "info": "Leave blank to use the article's featured image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title Override",
+          "info": "Leave blank to use the article's title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Blog Showcase",
+      "blocks": [
+        { "type": "article" },
+        { "type": "article" },
+        { "type": "article" }
+      ]
+    }
+  ]
+}
+{% endschema %}

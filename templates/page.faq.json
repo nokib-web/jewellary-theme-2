@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "faq-1": {
+          "type": "question",
+          "settings": {
+            "title": "What does carat mean?",
+            "text": "<p>Carat is the unit of weight for a diamond. Diamonds can range in weight from a fraction of a carat to several carats. One carat equals 0.2 metric grams. A carat can be further divided into points. 1 carat equals 100 points. Therefore, a half carat equals 50 points and a 25 pointer is a quarter carat. When considering diamonds of equal quality, the larger stone will have more value.</p>"
+          }
+        },
+        "faq-2": {
+          "type": "question",
+          "settings": {
+            "title": "What if I need my ring to be resized?",
+            "text": "<p>Most rings can be resized but this is dependent on the ring style and setting of the gemstones. Generally, ladies’ rings are a size N and mens’ rings are a size R. If a ring needs to be resized, please visit us instore or contact us for a quote.</p>"
+          }
+        },
+        "faq-4": {
+          "type": "question",
+          "settings": {
+            "title": "What does it mean when a pearl is ‘cultured’ and ‘freshwater’?",
+            "text": "<p>Cultured pearls are humanity’s work at duplicating what nature first started. A ‘seed’ or ‘nucleus’ (typically a round bead made of mother of pearl) is inserted into the oyster and the oyster is returned to the sea. The oyster will coat this ‘seed’ with nacre to create a cultured pearl. Freshwater pearls are also cultured. Multiple tissue seeds are inserted into a freshwater mussel. The mussel coats these seeds with nacre to produce cultured freshwater pearls.</p>"
+          }
+        },
+        "eca13db2-929e-4263-b0f7-b0f3fb59e5f3": {
+          "type": "question",
+          "settings": {
+            "title": "What does created mean?",
+            "text": "<p>Created gemstones are man-made. They are grown in strictly controlled laboratory conditions to recreate the brilliance of rare natural gemstones.</p>"
+          }
+        },
+        "9b092de2-826d-465c-82fd-a41486cae867": {
+          "type": "question",
+          "settings": {
+            "title": "What does TDW mean?",
+            "text": "<p>Total diamond weight of all of the diamonds set into the applicable product.</p>"
+          }
+        },
+        "2018967b-a7c6-488a-95eb-d92c8d78e04e": {
+          "type": "question",
+          "settings": {
+            "title": "Do you offer engraving?",
+            "text": "<p>Yes, we offer an instore engraving service. Please visit us instore or contact us for a quote.</p>"
+          }
+        },
+        "29d137be-8484-42ac-8459-346b427cd9d5": {
+          "type": "question",
+          "settings": {
+            "title": "Do you offer layby?",
+            "text": "<p>Yes, we are happy to offer a layby payment plan instore. Our normal layby terms require a 25% initial deposit, and regular payments of the balance within 3 months of the original transaction date. See instore for further details.</p>"
+          }
+        },
+        "ede58638-fd26-403d-afcd-f4ff71bd5fd8": {
+          "type": "question",
+          "settings": {
+            "title": "Do you offer repairs?",
+            "text": "<p>Yes, we are experts in both jewellery and watches repairs. Please present your item/s to any of our friendly team in-store and we will be able to provide you with an estimate for the repair.</p>"
+          }
+        },
+        "66d5e4bb-0e2e-4927-8dbb-b688fd2fe483": {
+          "type": "question",
+          "settings": {
+            "title": "How can I subscribe to your newsletter?",
+            "text": "<p>We invite you to register to become a ‘VIP’ on our homepage. You will then receive our regular newsletters, invites, special offers, birthday gifts and more.</p>"
+          }
+        },
+        "f4231158-8f6c-4c3d-a21c-c42197bc6d89": {
+          "type": "question",
+          "settings": {
+            "title": "Do you ship internationally?",
+            "text": "<p>We are unable to accept international orders.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-4",
+        "eca13db2-929e-4263-b0f7-b0f3fb59e5f3",
+        "9b092de2-826d-465c-82fd-a41486cae867",
+        "2018967b-a7c6-488a-95eb-d92c8d78e04e",
+        "29d137be-8484-42ac-8459-346b427cd9d5",
+        "ede58638-fd26-403d-afcd-f4ff71bd5fd8",
+        "66d5e4bb-0e2e-4927-8dbb-b688fd2fe483",
+        "f4231158-8f6c-4c3d-a21c-c42197bc6d89"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

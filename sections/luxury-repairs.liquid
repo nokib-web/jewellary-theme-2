@@ -1,0 +1,545 @@
+{%- style -%}
+.luxury-repairs-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }};
+  padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+  overflow: hidden;
+  font-family: var(--font-body-family), sans-serif;
+}
+
+.lr-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* Left Content */
+.lr-content {
+  flex: 1;
+  max-width: 500px;
+}
+
+.lr-eyebrow {
+  color: {{ section.settings.gold_accent }};
+  margin-bottom: 20px;
+  display: block;
+}
+
+.lr-heading {
+  color: {{ section.settings.heading_color }};
+  margin-bottom: 25px;
+}
+
+.lr-body {
+  color: {{ section.settings.text_color }};
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+.lr-body p {
+  margin: 0;
+}
+
+/* Trust Badges */
+.lr-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 45px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.lr-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.95rem;
+  color: {{ section.settings.text_color }};
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.lr-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: {{ section.settings.gold_accent }};
+}
+.lr-badge-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+/* Buttons */
+.lr-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.lr-btn-primary {
+  background-color: {{ section.settings.btn_bg_color }};
+  color: {{ section.settings.btn_text_color }};
+  padding: 16px 36px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  border-radius: {{ section.settings.btn_radius }}px;
+  transition: all 0.3s ease;
+  border: 1px solid {{ section.settings.btn_border_color }};
+}
+.lr-btn-primary:hover {
+  background-color: {{ section.settings.btn_hover_bg }};
+  color: {{ section.settings.btn_hover_text }};
+  border-color: {{ section.settings.btn_hover_border }};
+}
+
+/* Right Visual Area */
+.lr-visual {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+}
+
+.lr-hero-img-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+}
+
+.lr-hero-img-wrap::before {
+  content: "";
+  display: block;
+  padding-bottom: 115%; /* Portrait aspect ratio */
+}
+
+.lr-hero-img-wrap img, .lr-hero-img-wrap svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.lr-hero-img-wrap svg { background: #e9e9e9; }
+
+.lr-visual:hover .lr-hero-img-wrap img {
+  transform: scale(1.03);
+}
+
+@keyframes lrFloat1 {
+  0% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-15px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(-2deg); }
+}
+
+@keyframes lrFloat2 {
+  0% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(12px) rotate(4deg); }
+  100% { transform: translateY(0) rotate(3deg); }
+}
+
+/* Floating Images */
+.lr-float-img {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  background: #fff;
+}
+
+.lr-float-1 {
+  width: 45%;
+  bottom: -40px;
+  left: -60px;
+  z-index: 2;
+  animation: lrFloat1 8s ease-in-out infinite;
+}
+.lr-float-1::before {
+  content: "";
+  display: block;
+  padding-bottom: 100%; /* Square */
+}
+
+.lr-float-2 {
+  width: 35%;
+  top: 10%;
+  right: -40px;
+  z-index: 2;
+  animation: lrFloat2 9s ease-in-out infinite;
+}
+.lr-float-2::before {
+  content: "";
+  display: block;
+  padding-bottom: 120%;
+}
+
+.lr-float-img img, .lr-float-img svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+.lr-float-img svg { background: #dcdcdc; }
+
+/* Animations */
+.lr-animate-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.lr-animate-up.lr-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .lr-container {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 60px;
+  }
+  .lr-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  .lr-badges {
+    align-items: flex-start;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lr-buttons {
+    justify-content: center;
+  }
+  
+  .lr-visual {
+    width: 100%;
+    padding: 0 30px;
+  }
+  .lr-float-1 {
+    left: -10px;
+    bottom: -20px;
+    width: 50%;
+  }
+  .lr-float-2 {
+    right: -10px;
+    width: 40%;
+  }
+  .luxury-repairs-{{ section.id }} {
+    padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px 0;
+  }
+}
+{%- endstyle -%}
+
+<div class="luxury-repairs-{{ section.id }}">
+  <div class="lr-container">
+    
+    <div class="lr-content lr-animate-up">
+      {% if section.settings.eyebrow != blank %}
+        <div class="subheading lr-eyebrow">{{ section.settings.eyebrow }}</div>
+      {% endif %}
+      
+      {% if section.settings.heading != blank %}
+        <h2 class="h1 lr-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      
+      {% if section.settings.body != blank %}
+        <div class="rte lr-body">{{ section.settings.body }}</div>
+      {% endif %}
+      
+      {% if section.blocks.size > 0 %}
+        <ul class="lr-badges">
+          {% for block in section.blocks %}
+            <li class="lr-badge-item" {{ block.shopify_attributes }}>
+              <span class="lr-badge-icon">
+                {% if block.settings.icon == 'custom' and block.settings.custom_icon != blank %}
+                  <img src="{{ block.settings.custom_icon | image_url: width: 48 }}" alt="{{ block.settings.text }}" style="width:100%; height:100%; object-fit:contain;">
+                {% elsif block.settings.icon == 'star' %}
+                  <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                {% elsif block.settings.icon == 'shield' %}
+                  <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+                {% elsif block.settings.icon == 'map-pin' %}
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                {% elsif block.settings.icon == 'check' %}
+                  <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                {% endif %}
+              </span>
+              {{ block.settings.text }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      
+      <div class="lr-buttons">
+        {% if section.settings.primary_btn_label != blank %}
+          <a href="{{ section.settings.primary_btn_link }}" class="lr-btn-primary">{{ section.settings.primary_btn_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="lr-visual lr-animate-up" style="transition-delay: 0.2s;">
+      <div class="lr-hero-img-wrap">
+        {% if section.settings.hero_image != blank %}
+          {{ section.settings.hero_image | image_url: width: 1000 | image_tag: loading: 'lazy' }}
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      
+      <div class="lr-float-img lr-float-1">
+        {% if section.settings.float_image_1 != blank %}
+          {{ section.settings.float_image_1 | image_url: width: 600 | image_tag: loading: 'lazy' }}
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      
+      <div class="lr-float-img lr-float-2">
+        {% if section.settings.float_image_2 != blank %}
+          {{ section.settings.float_image_2 | image_url: width: 600 | image_tag: loading: 'lazy' }}
+        {% else %}
+          {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('lr-in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    
+    document.querySelectorAll('.lr-animate-up').forEach(el => observer.observe(el));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Luxury Services",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#F8F5F1"
+    },
+    {
+      "type": "color",
+      "id": "gold_accent",
+      "label": "Gold Accent Color",
+      "default": "#C8A26A"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#444444"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Trusted Since 1987"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Jewellery Repairs & Restoration"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body Text",
+      "default": "<p>Trust our master jewellers with your most precious pieces. We specialize in ring resizing, intricate repairs, heirloom restoration, custom engraving, and professional valuations.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button settings"
+    },
+    {
+      "type": "text",
+      "id": "primary_btn_label",
+      "label": "Button Label",
+      "default": "Explore Services"
+    },
+    {
+      "type": "url",
+      "id": "primary_btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "btn_radius",
+      "label": "Button Border Radius",
+      "min": 0, "max": 50, "step": 1, "default": 50
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg",
+      "label": "Button Hover Background",
+      "default": "#C8A26A"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_text",
+      "label": "Button Hover Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_border",
+      "label": "Button Hover Border Color",
+      "default": "#C8A26A"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Main Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "float_image_1",
+      "label": "Bottom Left Floating Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "float_image_2",
+      "label": "Top Right Floating Image"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0, "max": 200, "step": 10, "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0, "max": 200, "step": 10, "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile Padding Top",
+      "min": 0, "max": 100, "step": 5, "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile Padding Bottom",
+      "min": 0, "max": 100, "step": 5, "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Trust Badge",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "star", "label": "Star" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "map-pin", "label": "Map Pin" },
+            { "value": "check", "label": "Checkmark" },
+            { "value": "custom", "label": "Custom Image" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom Icon Image",
+          "info": "Used if 'Custom Image' is selected above."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Badge Text",
+          "default": "Premium Quality"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Luxury Services",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "star", "text": "35+ Years Experience" } },
+        { "type": "badge", "settings": { "icon": "shield", "text": "Family Owned" } },
+        { "type": "badge", "settings": { "icon": "map-pin", "text": "Sydney Based" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
