@@ -192,10 +192,10 @@
             "category": "",
             "subtitle": "",
             "bg_color": "#c2b2a2",
-            "product_image": "shopify://shop_images/Fidget_Beads_Ring.webp",
+            "product_image": "shopify://shop_images/close-up-ring.webp",
             "description": "Celebrate every milestone with a ring that tells your story.",
             "button_label": "Shop Rings",
-            "button_link": "shopify://collections/jewellery-rings-1"
+            "button_link": "shopify://products/fidget-beads-ring"
           }
         },
         "slide_2": {
@@ -208,7 +208,7 @@
             "product_image": "shopify://shop_images/ScreenShot2023-03-22at11.43.30PM.png",
             "description": "Elevate every look with our exquisite necklaces. From pendants to chokers, these designs add sophistication to any style.",
             "button_label": "Shop Rings",
-            "button_link": "shopify://collections/cudworth-necklace"
+            "button_link": "shopify://products/i-am-enough-ring"
           }
         }
       },
@@ -320,10 +320,10 @@
       "settings": {
         "layout": "left",
         "align_text": "left",
-        "image": "shopify://shop_images/ScreenShot2023-03-22at11.47.37PM.png",
-        "subtitle": "",
-        "title": "Master Craftsmanship",
-        "text": "<p>Decades of experience go into every piece we create. Our master jewelers blend traditional techniques with modern precision to craft rings that will last a lifetime and beyond.</p>",
+        "image": "shopify://shop_images/I_Am_Enough_Ring_Only_Gold.png",
+        "subtitle": "MADE TO MEAN MORE",
+        "title": "A LITTLE REMINDER, MADE TO LAST",
+        "text": "<p>Thoughtfully designed jewellery that brings meaning to the everyday. Each piece is created to be worn, loved and remembered—whether it reminds you of your worth or simply gives your hands something to hold onto</p>",
         "button_label": "Our Story",
         "button_link": "shopify://pages/about-Evoriajewels-jewellers"
       }
@@ -368,7 +368,7 @@
       "type": "story-banner",
       "settings": {
         "bg_color": "#000000",
-        "left_image": "shopify://shop_images/Fidget_Beads_Ring.webp",
+        "left_image": "shopify://shop_images/Fidget-Beads-Ring.webp",
         "right_image": "shopify://shop_images/I_Am_Enough_Ring_Only_Gold.webp",
         "text_align": "center",
         "text_size": 24,
@@ -406,29 +406,29 @@
         "step_hciLXf": {
           "type": "step",
           "settings": {
-            "title": "Step Title",
-            "text": "Description of this step."
+            "title": "INSPIRED BY YOU",
+            "text": "Every piece begins with an idea, feeling or little reminder worth carrying with you."
           }
         },
         "step_Tr3CwR": {
           "type": "step",
           "settings": {
-            "title": "Step Title",
-            "text": "Description of this step."
+            "title": "THOUGHTFULLY DESIGNED",
+            "text": "We turn meaningful ideas into timeless designs made to feel personal and effortless."
           }
         },
         "step_CPfYdP": {
           "type": "step",
           "settings": {
-            "title": "Step Title",
-            "text": "Description of this step."
+            "title": "MADE TO MEAN MORE",
+            "text": "From everyday comfort to quiet confidence, each detail is designed with purpose."
           }
         },
         "step_9Wm6dY": {
           "type": "step",
           "settings": {
-            "title": "Step Title",
-            "text": "Description of this step."
+            "title": "YOUR STORY, WORN",
+            "text": "A piece becomes truly yours when it carries a meaning only you understand."
           }
         }
       },
@@ -442,8 +442,8 @@
         "bg_color": "#ffffff",
         "text_color": "#111111",
         "accent_color": "#d4af37",
-        "title": "The Bespoke Journey",
-        "subtitle": "From a spark of imagination to a masterpiece you can wear. Discover how we turn your dream ring into reality.",
+        "title": "THE BESPOKE JOURNEY",
+        "subtitle": "From a simple idea to a piece with meaning. Discover the thoughtful journey behind jewellery made to become part of your story",
         "image": "shopify://shop_images/ScreenShot2023-03-22at11.43.30PM.png"
       }
     },
@@ -520,7 +520,7 @@
       "settings": {
         "image_1": "shopify://shop_images/ScreenShot2023-03-22at11.44.53PM.png",
         "image_2": "shopify://shop_images/I_Am_Enough_Ring_Only_Gold.png",
-        "image_3": "shopify://shop_images/ScreenShot2023-03-22at11.46.07PM.png",
+        "image_3": "shopify://shop_images/Fidget-Beads-Ring.webp",
         "image_radius": 16,
         "image_shadow": true,
         "initial_opacity": 0.4,
@@ -591,21 +591,21 @@
         "article_LXxXyV": {
           "type": "article",
           "settings": {
-            "article": "jewellery-education-centre/engagement-ring-buying-guide-australia",
+            "article": "news/the-meaning-behind-i-am-enough",
             "title": ""
           }
         },
         "article_Qhz6nE": {
           "type": "article",
           "settings": {
-            "article": "news/engagement-rings-in-north-rocks",
+            "article": "news/how-to-find-jewellery-that-feels-personal",
             "title": ""
           }
         },
         "article_LdQGYi": {
           "type": "article",
           "settings": {
-            "article": "jewellery-education-centre/engagement-ring-buying-guide-sydney",
+            "article": "news/small-reminders-that-make-a-big-difference",
             "title": ""
           }
         }
@@ -622,22 +622,6 @@
         "bg_color": "#ffffff",
         "padding_top": 50,
         "padding_bottom": 50
-      }
-    },
-    "blog-posts": {
-      "type": "blog-posts",
-      "disabled": true,
-      "settings": {
-        "title": "jewellery news & insights",
-        "blog": "jewellery-education-centre",
-        "post_limit": 3,
-        "blog_show_tags": false,
-        "blog_show_date": false,
-        "blog_show_comments": false,
-        "blog_show_author": false,
-        "view_all": true,
-        "blog_image_size": "square",
-        "divider": false
       }
     },
     "custom_instafeed_wrapper_new": {
@@ -716,7 +700,6 @@
     "164577628288f9dc1b",
     "conscious_luxury_new",
     "custom_blog_showcase_new",
-    "blog-posts",
     "custom_instafeed_wrapper_new",
     "newsletter_ezbTtz",
     "section_divider_new"
