@@ -368,7 +368,7 @@
       "type": "story-banner",
       "settings": {
         "bg_color": "#000000",
-        "left_image": "shopify://shop_images/Fidget-Beads-Ring.webp",
+        "left_image": "shopify://shop_images/closeup-ring.webp",
         "right_image": "shopify://shop_images/I_Am_Enough_Ring_Only_Gold.webp",
         "text_align": "center",
         "text_size": 24,
